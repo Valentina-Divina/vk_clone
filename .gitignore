@@ -1,6 +1,5 @@
 
 .DS_Store
-
 .Trashes
 *.swp
 # profile - REMOVED temporarily (on double-checking, I can't find it in OS X docs?)
@@ -162,4 +161,3 @@ xcuserdata/
 
 ####
 # UNKNOWN: recommended by others, but I can't discover what these files are
-#
