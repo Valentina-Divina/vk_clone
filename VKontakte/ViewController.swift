@@ -14,13 +14,23 @@ class ViewController: UIViewController {
     @IBOutlet var textPassword: UITextField!
     
     @IBAction func nextScene(_ sender: Any) {
+        guard let login = textLogin.text,
+              let password = textPassword.text,
+              login == "",
+              password == "" else {
+            show(message: "Поля логин/пароль должны быть пустыми")
+            return
+        }
+        
+        performSegue(withIdentifier: "Login", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+     
     }
 
-
 }
+
+
 
