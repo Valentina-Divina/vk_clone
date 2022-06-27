@@ -9,6 +9,9 @@ import UIKit
 
 class FriendListController: UITableViewController {
     
+    var dictionarySectionToFriends = [String: [MyFriends]]()
+    var friendTitles = [String]()
+    
     let friends = [
         MyFriends(name: "Guts Berserk", image: UIImage(named: "guts")),
         MyFriends(name: "Николай Мозгляков", image: UIImage(named: "kolya")),
@@ -22,23 +25,31 @@ class FriendListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        for friend in friends {
+            let friendKey = String(friend.name.prefix(1))
+            if var friendValues = dictionarySectionToFriends[friendKey] {
+                friendValues.append(friend)
+                dictionarySectionToFriends[friendKey] = friendValues
+            } else {
+                dictionarySectionToFriends[friendKey] = [friend]
+            }
+        }
+        friendTitles = [String](dictionarySectionToFriends.keys)
+        friendTitles = friendTitles.sorted()
     }
     
-    // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        
+        return friendTitles.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friends.count
+        let friendKey = friendTitles[section]
+        if let friendValues = dictionarySectionToFriends[friendKey]{
+            return friendValues.count
+        }
+        return 0
     }
     
     
@@ -46,9 +57,12 @@ class FriendListController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyFriendsCellID", for: indexPath) as? MyFriendsCell else {
             preconditionFailure("Error")
         }
-        cell.myFriendsImage.layer.cornerRadius = 40
-        cell.myFriendsImage.image = friends[indexPath.row].image
-        cell.myFriendsLable.text = friends[indexPath.row].name
+        
+        let friendKey = friendTitles[indexPath.section]
+        let friend = dictionarySectionToFriends[friendKey]?[indexPath.row]
+        
+        cell.customImageView.image = friend?.image
+        cell.myFriendsLable.text = friend?.name
         
         return cell
     }
@@ -58,12 +72,21 @@ class FriendListController: UITableViewController {
            let destinationVC = segue.destination as? FriendCollectionController,
            let indexPath = tableView.indexPathForSelectedRow {
             
-            let friend = friends[indexPath.row].name
+            let friendKey = friendTitles[indexPath.section]
+            let friend = dictionarySectionToFriends[friendKey]?[indexPath.row]
             
             
-            destinationVC.title = friend
-            destinationVC.image = friends[indexPath.row].image
+            destinationVC.title = friend?.name
+            destinationVC.image = friend?.image
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return friendTitles[section]
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return friendTitles
     }
     
     /*

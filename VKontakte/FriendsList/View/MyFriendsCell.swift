@@ -10,5 +10,5 @@ import UIKit
 class MyFriendsCell: UITableViewCell {
     
     @IBOutlet var myFriendsLable: UILabel!
-    @IBOutlet var myFriendsImage: UIImageView!
+    @IBOutlet var customImageView: CustomViewFriendsList!
 }
