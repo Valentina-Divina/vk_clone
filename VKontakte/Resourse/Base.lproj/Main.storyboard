@@ -177,31 +177,43 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="167"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wind" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="o6O-tQ-Iuh">
-                                            <rect key="frame" x="5" y="12" width="80" height="77"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quB-KP-D2q" customClass="CustomViewFriendsList" customModule="VKontakte" customModuleProvider="target">
+                                            <rect key="frame" x="5" y="10" width="80" height="147"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="o6O-tQ-Iuh" secondAttribute="height" multiplier="1:1" id="Ggx-PS-bNT"/>
-                                                <constraint firstAttribute="width" constant="80" id="cfO-Au-X7J"/>
+                                                <constraint firstAttribute="width" secondItem="quB-KP-D2q" secondAttribute="height" multiplier="1:1" id="O7c-Sf-Lbp"/>
+                                                <constraint firstAttribute="width" constant="80" id="yhO-2Y-WJ1"/>
                                             </constraints>
-                                        </imageView>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="grafon"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="0.40000000000000002"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gv-G1-tbf">
-                                            <rect key="frame" x="105" y="39.5" width="289" height="21"/>
+                                            <rect key="frame" x="105" y="73" width="289" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="o6O-tQ-Iuh" firstAttribute="top" secondItem="gw6-aw-gwL" secondAttribute="top" constant="10" id="0yf-FQ-q0P"/>
-                                        <constraint firstAttribute="bottom" secondItem="o6O-tQ-Iuh" secondAttribute="bottom" priority="999" constant="10" id="1Jk-aA-IWy"/>
-                                        <constraint firstItem="o6O-tQ-Iuh" firstAttribute="leading" secondItem="gw6-aw-gwL" secondAttribute="leading" constant="5" id="E81-cM-Het"/>
-                                        <constraint firstItem="4Gv-G1-tbf" firstAttribute="leading" secondItem="o6O-tQ-Iuh" secondAttribute="trailing" constant="20" id="Xnv-4B-Ben"/>
-                                        <constraint firstItem="4Gv-G1-tbf" firstAttribute="centerY" secondItem="o6O-tQ-Iuh" secondAttribute="centerY" id="jbf-xO-jql"/>
-                                        <constraint firstAttribute="trailing" secondItem="4Gv-G1-tbf" secondAttribute="trailing" constant="20" id="w5E-hc-0ek"/>
+                                        <constraint firstItem="4Gv-G1-tbf" firstAttribute="centerY" secondItem="gw6-aw-gwL" secondAttribute="centerY" id="1Ti-rW-qiF"/>
+                                        <constraint firstItem="quB-KP-D2q" firstAttribute="top" secondItem="gw6-aw-gwL" secondAttribute="top" constant="10" id="4dk-6D-MPw"/>
+                                        <constraint firstAttribute="trailing" secondItem="4Gv-G1-tbf" secondAttribute="trailing" constant="20" id="Kuj-mR-E2t"/>
+                                        <constraint firstAttribute="bottom" secondItem="quB-KP-D2q" secondAttribute="bottom" constant="10" id="bAZ-EF-ZfD"/>
+                                        <constraint firstItem="4Gv-G1-tbf" firstAttribute="leading" secondItem="quB-KP-D2q" secondAttribute="trailing" constant="20" id="kh8-IQ-NTj"/>
+                                        <constraint firstItem="quB-KP-D2q" firstAttribute="leading" secondItem="gw6-aw-gwL" secondAttribute="leading" constant="5" id="sR9-Fv-uuR"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="myFriendsImage" destination="o6O-tQ-Iuh" id="2jT-vv-FpZ"/>
+                                    <outlet property="customImageView" destination="quB-KP-D2q" id="bDN-CC-LMJ"/>
                                     <outlet property="myFriendsLable" destination="4Gv-G1-tbf" id="c8u-9y-KVD"/>
                                     <segue destination="zVE-ht-6ew" kind="show" identifier="showFriend" id="cmf-bE-GwJ"/>
                                 </connections>
@@ -216,7 +228,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXv-D1-Rd1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="1246"/>
+            <point key="canvasLocation" x="673.91304347826087" y="1245.5357142857142"/>
         </scene>
         <!--Friend Collection Controller-->
         <scene sceneID="afu-L8-Bzj">
@@ -247,11 +259,21 @@
                                                 <constraint firstAttribute="width" secondItem="t7c-1v-4Bq" secondAttribute="height" multiplier="1:1" id="k8V-6R-XrI"/>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUK-59-YWS" customClass="HeartControl" customModule="VKontakte" customModuleProvider="target">
+                                            <rect key="frame" x="150" y="221" width="100" height="29"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="uQZ-0f-LvK"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="t7c-1v-4Bq" firstAttribute="top" secondItem="N7c-Z1-yic" secondAttribute="top" constant="5" id="Atm-tE-1RP"/>
                                         <constraint firstItem="t7c-1v-4Bq" firstAttribute="leading" secondItem="N7c-Z1-yic" secondAttribute="leading" constant="5" id="Gw8-5w-zL9"/>
                                         <constraint firstAttribute="bottom" secondItem="t7c-1v-4Bq" secondAttribute="bottom" constant="5" id="Osc-hu-KrT"/>
+                                        <constraint firstItem="SUK-59-YWS" firstAttribute="top" secondItem="N7c-Z1-yic" secondAttribute="top" constant="221" id="Woj-lB-0ra"/>
+                                        <constraint firstItem="t7c-1v-4Bq" firstAttribute="trailing" secondItem="SUK-59-YWS" secondAttribute="trailing" constant="5" id="dr1-Fj-vXa"/>
+                                        <constraint firstItem="t7c-1v-4Bq" firstAttribute="bottom" secondItem="SUK-59-YWS" secondAttribute="bottom" constant="5" id="h8G-k3-gbb"/>
                                         <constraint firstAttribute="trailing" secondItem="t7c-1v-4Bq" secondAttribute="trailing" constant="5" id="mrQ-LY-Yfq"/>
                                     </constraints>
                                 </collectionViewCellContentView>
@@ -269,7 +291,40 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Emo-JZ-aRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507" y="1246"/>
+            <point key="canvasLocation" x="1505.7971014492755" y="1245.5357142857142"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="BN9-lJ-0Rg">
+            <objects>
+                <viewController id="kiD-CG-tBn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sxI-eG-wpp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cvz-Jb-bq3">
+                                <rect key="frame" x="279" y="502" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoE-a3-fWJ">
+                                <rect key="frame" x="107" y="617" width="18" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pel-fV-2Rk">
+                                <rect key="frame" x="107" y="604" width="51" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonConfiguration key="configuration" style="plain" image="suit.heart" catalog="system" title=""/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="e2I-ng-dra"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f9V-o7-rAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494.202898550725" y="1122.9910714285713"/>
         </scene>
         <!--Group List Controller-->
         <scene sceneID="HrU-M4-VK0">
@@ -394,13 +449,14 @@
     </scenes>
     <resources>
         <image name="Image" width="108" height="108"/>
+        <image name="grafon" width="150" height="150"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="smoke" catalog="system" width="128" height="96"/>
+        <image name="suit.heart" catalog="system" width="128" height="107"/>
         <image name="tornado" catalog="system" width="117" height="128"/>
-        <image name="wind" catalog="system" width="128" height="103"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

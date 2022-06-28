@@ -17,7 +17,6 @@ class FriendCollectionController: UICollectionViewController {
         super.viewDidLoad()
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        // Do any additional setup after loading the view.
     }
     
     /*
@@ -55,6 +54,8 @@ class FriendCollectionController: UICollectionViewController {
         return cell
     }
     
+    
+   
     // MARK: UICollectionViewDelegate
     
     /*
@@ -85,5 +86,7 @@ class FriendCollectionController: UICollectionViewController {
      
      }
      */
+    
+    
     
 }
