@@ -51,16 +51,18 @@ import UIKit
         imageView = UIImageView() //создаем картинку и лебле
         lableControl = UILabel()
         lableControl.textColor = .black
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.image = heartImage
+        imageView.backgroundColor = nil
         lableControl.text = String(heartsCounter)
         
         stackView.addArrangedSubview(lableControl)
         stackView.addArrangedSubview(imageView)
         
+        
         stackView.axis = .horizontal
         stackView.distribution = .equalCentering
-        stackView.alignment = .trailing
+        stackView.alignment = .center
         stackView.spacing = 10
         
         self.addSubview(stackView)
@@ -78,5 +80,7 @@ import UIKit
     override func layoutSubviews() {
         super.layoutSubviews()
         stackView.frame = bounds
+        imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
     }
 }

@@ -7,9 +7,21 @@
 
 import UIKit
 
+//class ResultsVS: UIViewController {
+//
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.backgroundColor = .green
+//    }
+//
+//
+
+//}
+
 class GroupListController: UITableViewController {
     
-    var groups = [
+    private var groups: [GroupCollection] = [
         GroupCollection(name: "Молоко+", image: UIImage(named: "cow")), // image: UIImage(named: "cow")),
         GroupCollection(name: "Karelia aesthetic", image: UIImage(named: "karelia")),
         GroupCollection(name: "Средневековая таверна", image: UIImage(named: "tavern")),
@@ -20,36 +32,64 @@ class GroupListController: UITableViewController {
         GroupCollection(name: "Мемы", image: UIImage(named: "memes")),
     ]
     
+    private var filteredGroups = [GroupCollection]()
+    private let searchController = UISearchController(searchResultsController: nil) // экземпляр класса SearchController
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
-    // MARK: - Table view data source
+    //  func updateSearchResults(for searchController: UISearchController) {
+    //        guard let text = searchController.searchBar.text  else {
+    //            return
+    //        }
+    //        print(text)
+    //        let vc = searchController.searchResultsController as? ResultsVS
+    //        vc?.view.backgroundColor = .black
+    //    }
     
     override func numberOfSections(in tableView: UITableView) -> Int { // количество секций
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { // количество строк в секции
+        if isFiltering {
+            return filteredGroups.count
+        }
         return groups.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // создание ячейки
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCellID", // ячейку можно переиспользовать
-                                                    for: indexPath) as? GroupCell else {
+                                                       for: indexPath) as? GroupCell else {
             preconditionFailure("Error")
         }
         
-        cell.lableGroupCell.text = groups[indexPath.row].name
+        var group: GroupCollection
+        if isFiltering {
+            group = filteredGroups[indexPath.row]
+        } else {
+            group = groups[indexPath.row]
+        }
+        
+        cell.lableGroupCell.text = group.name
         cell.imageGroupCell.layer.cornerRadius = 40
-        cell.imageGroupCell.image = groups[indexPath.row ].image
+        cell.imageGroupCell.image = group.image
         
         return cell
     }
@@ -115,4 +155,17 @@ class GroupListController: UITableViewController {
      }
      */
     
+}
+
+extension GroupListController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterForSearchText(_ searchText: String) { // заполняем массив отфильтрованными данными
+        filteredGroups = groups.filter({ (group: GroupCollection ) -> Bool in
+            return group.name.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
+    }
 }

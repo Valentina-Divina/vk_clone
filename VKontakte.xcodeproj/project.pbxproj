@@ -19,6 +19,10 @@
 		35241A52286499FF00FA20C5 /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */; };
 		35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */; };
 		35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A5B2864BC0300FA20C5 /* OtherGroups.swift */; };
+		356F01232871F90E0033169A /* NewsfeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F01222871F90E0033169A /* NewsfeedController.swift */; };
+		356F012728730E920033169A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F012628730E920033169A /* PostCell.swift */; };
+		356F012A28731BDE0033169A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F012928731BDE0033169A /* Post.swift */; };
+		3597100328735FA500F93F9C /* CollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3597100228735FA500F93F9C /* CollageView.swift */; };
 		35A7BE96286B667700A03FE5 /* ColorGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */; };
 		35E4F8A42868C5E800A95E07 /* HeartControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4F8A32868C5E800A95E07 /* HeartControl.swift */; };
 		35EA8502285B820A00EAA1BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA8501285B820A00EAA1BB /* AppDelegate.swift */; };
@@ -43,6 +47,10 @@
 		35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
 		35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsCell.swift; sourceTree = "<group>"; };
 		35241A5B2864BC0300FA20C5 /* OtherGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroups.swift; sourceTree = "<group>"; };
+		356F01222871F90E0033169A /* NewsfeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedController.swift; sourceTree = "<group>"; };
+		356F012628730E920033169A /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		356F012928731BDE0033169A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		3597100228735FA500F93F9C /* CollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageView.swift; sourceTree = "<group>"; };
 		35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGameViewController.swift; sourceTree = "<group>"; };
 		35E4F8A32868C5E800A95E07 /* HeartControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartControl.swift; sourceTree = "<group>"; };
 		35EA84FE285B820A00EAA1BB /* VKontakte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKontakte.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +156,7 @@
 		35241A4A28637FBA00FA20C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				35038E9F2868791B0038C244 /* CustomViewFriendsList.swift */,
 				35241A412863795B00FA20C5 /* MyFriendsCell.swift */,
 			);
 			path = View;
@@ -191,6 +200,7 @@
 		35241A5328649A0F00FA20C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				35E4F8A32868C5E800A95E07 /* HeartControl.swift */,
 				35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */,
 			);
 			path = View;
@@ -220,10 +230,60 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		35EA84F5285B820A00EAA1BB = {
+		3535F85E2871EF12007DF058 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				3535F85F2871EF29007DF058 /* Controller */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		3535F85F2871EF29007DF058 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3535F8602871EF69007DF058 /* Newsfeed */ = {
+			isa = PBXGroup;
+			children = (
+				356F012828731BBF0033169A /* Model */,
+				356F012528730DFD0033169A /* View */,
+				356F01242871F9130033169A /* Controller */,
+			);
+			path = Newsfeed;
+			sourceTree = "<group>";
+		};
+		356F01242871F9130033169A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				356F01222871F90E0033169A /* NewsfeedController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		356F012528730DFD0033169A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				356F012628730E920033169A /* PostCell.swift */,
+				3597100228735FA500F93F9C /* CollageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		356F012828731BBF0033169A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				356F012928731BDE0033169A /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35EA84F5285B820A00EAA1BB = {
+			isa = PBXGroup;
+			children = (
 				35EA8500285B820A00EAA1BB /* VKontakte */,
 				35EA84FF285B820A00EAA1BB /* Products */,
 			);
@@ -240,6 +300,8 @@
 		35EA8500285B820A00EAA1BB /* VKontakte */ = {
 			isa = PBXGroup;
 			children = (
+				3535F8602871EF69007DF058 /* Newsfeed */,
+				3535F85E2871EF12007DF058 /* Game */,
 				35EA8501285B820A00EAA1BB /* AppDelegate.swift */,
 				35EA8503285B820A00EAA1BB /* SceneDelegate.swift */,
 				35241A3A2863716500FA20C5 /* Controller */,
@@ -250,8 +312,6 @@
 				35241A4C2864866B00FA20C5 /* OtherGroups */,
 				35241A4828637F7C00FA20C5 /* FriendsList */,
 				35241A4F2864964100FA20C5 /* Friend */,
-				35038E9F2868791B0038C244 /* CustomViewFriendsList.swift */,
-				35E4F8A32868C5E800A95E07 /* HeartControl.swift */,
 			);
 			path = VKontakte;
 			sourceTree = "<group>";
@@ -334,10 +394,12 @@
 				35241A4E2864963300FA20C5 /* FriendCollectionController.swift in Sources */,
 				35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */,
 				35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */,
+				356F01232871F90E0033169A /* NewsfeedController.swift in Sources */,
 				35241A4428637C7B00FA20C5 /* MyFriends.swift in Sources */,
 				35EA8506285B820A00EAA1BB /* ViewController.swift in Sources */,
 				35241A3728621A2700FA20C5 /* GroupCell.swift in Sources */,
 				35241A392863613B00FA20C5 /* GroupCollection.swift in Sources */,
+				356F012A28731BDE0033169A /* Post.swift in Sources */,
 				35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */,
 				35E4F8A42868C5E800A95E07 /* HeartControl.swift in Sources */,
 				35EA8502285B820A00EAA1BB /* AppDelegate.swift in Sources */,
@@ -345,6 +407,8 @@
 				35241A332862121500FA20C5 /* OtherGroupsController.swift in Sources */,
 				35A7BE96286B667700A03FE5 /* ColorGameViewController.swift in Sources */,
 				35EA8504285B820A00EAA1BB /* SceneDelegate.swift in Sources */,
+				3597100328735FA500F93F9C /* CollageView.swift in Sources */,
+				356F012728730E920033169A /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
