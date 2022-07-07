@@ -28,6 +28,8 @@ class FriendListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture(sender:)))
+        
         for friend in friends {
             let friendKey = String(friend.name.prefix(1))
             if var friendValues = dictionarySectionToFriends[friendKey] {
@@ -40,6 +42,10 @@ class FriendListController: UITableViewController {
         friendTitles = [String](dictionarySectionToFriends.keys)
         friendTitles = friendTitles.sorted()
     }
+    
+  //  @objc private func handleTapGesture(sender: UITapGestureRecognizer ) {
+        
+ //   }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -66,6 +72,8 @@ class FriendListController: UITableViewController {
         
         cell.customImageView.image = friend?.image
         cell.myFriendsLable.text = friend?.name
+        
+        cell.setup()
         
         return cell
     }
