@@ -53,15 +53,6 @@ class GroupListController: UITableViewController {
         definesPresentationContext = true
     }
     
-    //  func updateSearchResults(for searchController: UISearchController) {
-    //        guard let text = searchController.searchBar.text  else {
-    //            return
-    //        }
-    //        print(text)
-    //        let vc = searchController.searchResultsController as? ResultsVS
-    //        vc?.view.backgroundColor = .black
-    //    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int { // количество секций
         return 1
     }
@@ -94,15 +85,6 @@ class GroupListController: UITableViewController {
         return cell
     }
     
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "showOtherGroups",
-     let destinationVC = segue.destination as? OtherGroupsController {
-     destinationVC.joinedGroupsLink = groups
-     }
-     
-     }
-     */
     
     @IBAction func addSelectGroups(segue: UIStoryboardSegue) {
         if let selected = segue.source as? OtherGroupsController,

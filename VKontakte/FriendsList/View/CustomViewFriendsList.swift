@@ -55,10 +55,6 @@ import UIKit
         imageView.layer.masksToBounds = true
         
         stackView.addSubview(imageView)
-        
-        
-        
-        
         stackView.layer.shadowOffset = CGSize(width: 5, height: 6)
         
         self.addSubview(stackView)
