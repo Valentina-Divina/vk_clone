@@ -7,16 +7,20 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "FriendCollectionCellID"
 
 class FriendCollectionController: UICollectionViewController {
     
-    var image: UIImage? = nil
+    let columnCount = 2
+    let offset: CGFloat = 2.0
+    
+    //  var image: UIImage? = nil
+    var friend: MyFriends? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
+//        self.collectionView!.register(FriendCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "FriendGalleryView", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     /*
@@ -37,25 +41,32 @@ class FriendCollectionController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 1
+        
+        return friend?.photoGallery.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCollectionCellID",
-                                                            for: indexPath) as? FriendCollectionCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCollectionCellID", for: indexPath) as? FriendGalleryView else {
             preconditionFailure("Error")
         }
-        cell.imageView.image = image
+        
+        cell.imageView.image = friend?.photoGallery[indexPath.row]
         
         // Configure the cell
         
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FullScreenViewControllerID") as! FullScreenViewController
+        vc.friend = self.friend
+        vc.index = indexPath.item
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
-   
+    
+    
     // MARK: UICollectionViewDelegate
     
     /*
@@ -89,4 +100,20 @@ class FriendCollectionController: UICollectionViewController {
     
     
     
+}
+
+extension FriendCollectionController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var size = CGSize()
+        let width = collectionView.frame.width / CGFloat(columnCount)
+        let height = width
+        print(width)
+        print(height)
+        let spacing = CGFloat((columnCount + 1)) * offset / CGFloat(columnCount)
+        print(spacing)
+        size.width = width - spacing
+        size.height = height - (offset * 2)
+        
+        return size
+    }
 }

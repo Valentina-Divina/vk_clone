@@ -16,13 +16,13 @@ class FriendListController: UITableViewController {
     var friendTitles = [String]()
     
     let friends = [
-        MyFriends(name: "Guts Berserk", image: UIImage(named: "guts")),
-        MyFriends(name: "Николай Мозгляков", image: UIImage(named: "kolya")),
-        MyFriends(name: "Сергей Кочетков", image: UIImage(named: "serg")),
-        MyFriends(name: "Анастасия Землепашская", image: UIImage(named: "female")),
-        MyFriends(name: "Михаил Изпод-Вылез", image: UIImage(named: "misha")),
-        MyFriends(name: "Илон Маск", image: UIImage(named: "ilon")),
-        MyFriends(name: "Марк Аврелий", image: UIImage(named: "mark")),
+        MyFriends(name: "Guts Berserk", image: UIImage(named: "guts"), photoGallery: [UIImage(named: "cow")!,UIImage(named: "ilon")!,UIImage(named: "misha")!,UIImage(named: "kolya")!,UIImage(named: "female")!,UIImage(named: "mark")!]),
+        MyFriends(name: "Николай Мозгляков", image: UIImage(named: "kolya"), photoGallery: [UIImage(named: "cow")!]),
+        MyFriends(name: "Сергей Кочетков", image: UIImage(named: "serg"), photoGallery: [UIImage(named: "cow")!]),
+        MyFriends(name: "Анастасия Землепашская", image: UIImage(named: "female"), photoGallery: [UIImage(named: "cow")!]),
+        MyFriends(name: "Михаил Изпод-Вылез", image: UIImage(named: "misha"), photoGallery: [UIImage(named: "cow")!]),
+        MyFriends(name: "Илон Маск", image: UIImage(named: "ilon"), photoGallery: [UIImage(named: "cow")!]),
+        MyFriends(name: "Марк Аврелий", image: UIImage(named: "mark"), photoGallery: [UIImage(named: "cow")!])
     ]
     
     override func viewDidLoad() {
@@ -88,7 +88,7 @@ class FriendListController: UITableViewController {
             
             
             destinationVC.title = friend?.name
-            destinationVC.image = friend?.image
+            destinationVC.friend = friend
         }
     }
     

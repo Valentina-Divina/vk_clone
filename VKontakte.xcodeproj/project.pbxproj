@@ -19,6 +19,9 @@
 		35241A52286499FF00FA20C5 /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */; };
 		35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */; };
 		35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A5B2864BC0300FA20C5 /* OtherGroups.swift */; };
+		35653CC72879FBBD000406AE /* FriendGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35653CC52879FBBD000406AE /* FriendGalleryView.swift */; };
+		35653CC82879FBBD000406AE /* FriendGalleryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35653CC62879FBBD000406AE /* FriendGalleryView.xib */; };
+		35653CCA287A0581000406AE /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35653CC9287A0581000406AE /* FullScreenViewController.swift */; };
 		356F01232871F90E0033169A /* NewsfeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F01222871F90E0033169A /* NewsfeedController.swift */; };
 		356F012728730E920033169A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F012628730E920033169A /* PostCell.swift */; };
 		356F012A28731BDE0033169A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F012928731BDE0033169A /* Post.swift */; };
@@ -47,6 +50,9 @@
 		35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
 		35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsCell.swift; sourceTree = "<group>"; };
 		35241A5B2864BC0300FA20C5 /* OtherGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroups.swift; sourceTree = "<group>"; };
+		35653CC52879FBBD000406AE /* FriendGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendGalleryView.swift; sourceTree = "<group>"; };
+		35653CC62879FBBD000406AE /* FriendGalleryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendGalleryView.xib; sourceTree = "<group>"; };
+		35653CC9287A0581000406AE /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		356F01222871F90E0033169A /* NewsfeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedController.swift; sourceTree = "<group>"; };
 		356F012628730E920033169A /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		356F012928731BDE0033169A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -202,6 +208,8 @@
 			children = (
 				35E4F8A32868C5E800A95E07 /* HeartControl.swift */,
 				35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */,
+				35653CC52879FBBD000406AE /* FriendGalleryView.swift */,
+				35653CC62879FBBD000406AE /* FriendGalleryView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +320,7 @@
 				35241A4C2864866B00FA20C5 /* OtherGroups */,
 				35241A4828637F7C00FA20C5 /* FriendsList */,
 				35241A4F2864964100FA20C5 /* Friend */,
+				35653CC9287A0581000406AE /* FullScreenViewController.swift */,
 			);
 			path = VKontakte;
 			sourceTree = "<group>";
@@ -375,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35EA850E285B820B00EAA1BB /* LaunchScreen.storyboard in Resources */,
+				35653CC82879FBBD000406AE /* FriendGalleryView.xib in Resources */,
 				35EA850B285B820B00EAA1BB /* Assets.xcassets in Resources */,
 				35EA8509285B820A00EAA1BB /* Main.storyboard in Resources */,
 			);
@@ -392,11 +402,13 @@
 				35241A3128620FD300FA20C5 /* GroupListController.swift in Sources */,
 				35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */,
 				35241A4E2864963300FA20C5 /* FriendCollectionController.swift in Sources */,
+				35653CCA287A0581000406AE /* FullScreenViewController.swift in Sources */,
 				35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */,
 				35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */,
 				356F01232871F90E0033169A /* NewsfeedController.swift in Sources */,
 				35241A4428637C7B00FA20C5 /* MyFriends.swift in Sources */,
 				35EA8506285B820A00EAA1BB /* ViewController.swift in Sources */,
+				35653CC72879FBBD000406AE /* FriendGalleryView.swift in Sources */,
 				35241A3728621A2700FA20C5 /* GroupCell.swift in Sources */,
 				35241A392863613B00FA20C5 /* GroupCollection.swift in Sources */,
 				356F012A28731BDE0033169A /* Post.swift in Sources */,
