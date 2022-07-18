@@ -405,7 +405,7 @@
         <!--Groups-->
         <scene sceneID="nE7-rp-ln8">
             <objects>
-                <navigationController id="OJk-kj-kca" sceneMemberID="viewController">
+                <navigationController id="OJk-kj-kca" customClass="CustomNavigationController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" image="person.3" catalog="system" selectedImage="person.3.fill" id="Dbe-zb-6GS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BSS-kD-A9J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
