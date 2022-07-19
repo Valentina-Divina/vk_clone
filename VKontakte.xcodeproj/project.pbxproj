@@ -35,6 +35,8 @@
 		35EA850B285B820B00EAA1BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35EA850A285B820B00EAA1BB /* Assets.xcassets */; };
 		35EA850E285B820B00EAA1BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35EA850C285B820B00EAA1BB /* LaunchScreen.storyboard */; };
 		35EBB258285E0F26009FEFE0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBB257285E0F26009FEFE0 /* UIViewController+Extension.swift */; };
+		35F3978228858AFF00A25405 /* CustomUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F3978128858AFF00A25405 /* CustomUINavigationController.swift */; };
+		35F3978428858B3800A25405 /* PopPushAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F3978328858B3800A25405 /* PopPushAnimators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		35EA850D285B820B00EAA1BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35EA850F285B820B00EAA1BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35EBB257285E0F26009FEFE0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		35F3978128858AFF00A25405 /* CustomUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUINavigationController.swift; sourceTree = "<group>"; };
+		35F3978328858B3800A25405 /* PopPushAnimators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPushAnimators.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 		35241A502864964B00FA20C5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				35653CC9287A0581000406AE /* FullScreenViewController.swift */,
 				35241A4D2864963300FA20C5 /* FriendCollectionController.swift */,
 			);
 			path = Controller;
@@ -289,6 +294,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3572360228858A54008EE729 /* UIHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				35F3978128858AFF00A25405 /* CustomUINavigationController.swift */,
+				35F3978328858B3800A25405 /* PopPushAnimators.swift */,
+			);
+			path = UIHelpers;
+			sourceTree = "<group>";
+		};
 		35EA84F5285B820A00EAA1BB = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +322,7 @@
 		35EA8500285B820A00EAA1BB /* VKontakte */ = {
 			isa = PBXGroup;
 			children = (
+				3572360228858A54008EE729 /* UIHelpers */,
 				3535F8602871EF69007DF058 /* Newsfeed */,
 				3535F85E2871EF12007DF058 /* Game */,
 				35EA8501285B820A00EAA1BB /* AppDelegate.swift */,
@@ -320,7 +335,6 @@
 				35241A4C2864866B00FA20C5 /* OtherGroups */,
 				35241A4828637F7C00FA20C5 /* FriendsList */,
 				35241A4F2864964100FA20C5 /* Friend */,
-				35653CC9287A0581000406AE /* FullScreenViewController.swift */,
 			);
 			path = VKontakte;
 			sourceTree = "<group>";
@@ -405,6 +419,7 @@
 				35653CCA287A0581000406AE /* FullScreenViewController.swift in Sources */,
 				35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */,
 				35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */,
+				35F3978428858B3800A25405 /* PopPushAnimators.swift in Sources */,
 				356F01232871F90E0033169A /* NewsfeedController.swift in Sources */,
 				35241A4428637C7B00FA20C5 /* MyFriends.swift in Sources */,
 				35EA8506285B820A00EAA1BB /* ViewController.swift in Sources */,
@@ -414,6 +429,7 @@
 				356F012A28731BDE0033169A /* Post.swift in Sources */,
 				35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */,
 				35E4F8A42868C5E800A95E07 /* HeartControl.swift in Sources */,
+				35F3978228858AFF00A25405 /* CustomUINavigationController.swift in Sources */,
 				35EA8502285B820A00EAA1BB /* AppDelegate.swift in Sources */,
 				35241A422863795B00FA20C5 /* MyFriendsCell.swift in Sources */,
 				35241A332862121500FA20C5 /* OtherGroupsController.swift in Sources */,

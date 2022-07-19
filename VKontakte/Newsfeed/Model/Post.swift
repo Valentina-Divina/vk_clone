@@ -30,7 +30,7 @@ struct Post {
         
         let misha = User(username: "Михаид Извод-Вылез", profileImage: UIImage(named: "misha"))
                          
-        let post5 = Post(createdBy: misha, timeAgo: "5 дней назад", caption: "Умер ли Райна Гослинг в конце фильма Drive? Разбираться будем в следующем посте уже завтра.", image: [UIImage(named: "drive" )], numberOfViews: 552)
+        let post5 = Post(createdBy: misha, timeAgo: "5 дней назад", caption: "Умер ли Райн Гослинг в конце фильма Drive? Разбираться будем в следующем посте уже завтра.", image: [UIImage(named: "drive" )], numberOfViews: 552)
                          
       
                             
