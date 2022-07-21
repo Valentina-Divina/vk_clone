@@ -37,13 +37,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="y0d-ow-eew">
-                                        <rect key="frame" x="107" y="0.0" width="200" height="200"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="88U-nP-Hbo"/>
-                                            <constraint firstAttribute="width" constant="200" id="QOM-uo-Pr7"/>
-                                        </constraints>
-                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5y-Ep-MVN">
                                         <rect key="frame" x="107" y="394" width="200" height="34"/>
                                         <constraints>
@@ -63,19 +56,26 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUX-aG-qae">
                                         <rect key="frame" x="157" y="468" width="100" height="31"/>
                                     </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="y0d-ow-eew">
+                                        <rect key="frame" x="107" y="52" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="88U-nP-Hbo"/>
+                                            <constraint firstAttribute="width" constant="200" id="QOM-uo-Pr7"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="5ij-vO-hcC" firstAttribute="top" secondItem="a5y-Ep-MVN" secondAttribute="bottom" constant="40" id="2W9-hJ-di6"/>
                                     <constraint firstItem="YUX-aG-qae" firstAttribute="trailing" secondItem="5ij-vO-hcC" secondAttribute="trailing" id="5Lb-H7-DcX"/>
                                     <constraint firstItem="5ij-vO-hcC" firstAttribute="centerX" secondItem="mYu-3D-7Ki" secondAttribute="centerX" id="7iI-5U-57o"/>
                                     <constraint firstAttribute="trailing" secondItem="5ij-vO-hcC" secondAttribute="trailing" constant="145" id="85R-Uc-jZf"/>
-                                    <constraint firstItem="y0d-ow-eew" firstAttribute="top" secondItem="dhn-LS-sgH" secondAttribute="top" id="BaA-Xf-mlb"/>
+                                    <constraint firstItem="y0d-ow-eew" firstAttribute="top" secondItem="dhn-LS-sgH" secondAttribute="top" constant="52" id="BaA-Xf-mlb"/>
                                     <constraint firstItem="mYu-3D-7Ki" firstAttribute="top" secondItem="ulk-s1-aTN" secondAttribute="bottom" constant="40" id="CAO-iL-jQw"/>
                                     <constraint firstItem="YUX-aG-qae" firstAttribute="centerY" secondItem="5ij-vO-hcC" secondAttribute="centerY" id="CEr-un-R5g"/>
                                     <constraint firstItem="YUX-aG-qae" firstAttribute="centerX" secondItem="5ij-vO-hcC" secondAttribute="centerX" id="D6c-9A-7eM"/>
                                     <constraint firstItem="YUX-aG-qae" firstAttribute="top" secondItem="5ij-vO-hcC" secondAttribute="top" id="Fnl-yr-CvY"/>
                                     <constraint firstItem="mYu-3D-7Ki" firstAttribute="centerX" secondItem="dhn-LS-sgH" secondAttribute="centerX" id="Ifj-3f-zXN"/>
-                                    <constraint firstItem="ulk-s1-aTN" firstAttribute="top" secondItem="y0d-ow-eew" secondAttribute="bottom" constant="60" id="Ifj-ae-9Pi"/>
+                                    <constraint firstItem="ulk-s1-aTN" firstAttribute="top" secondItem="y0d-ow-eew" secondAttribute="bottom" priority="999" constant="8" id="Ifj-ae-9Pi"/>
                                     <constraint firstItem="a5y-Ep-MVN" firstAttribute="top" secondItem="mYu-3D-7Ki" secondAttribute="bottom" constant="30" id="b5U-qE-nKl"/>
                                     <constraint firstItem="YUX-aG-qae" firstAttribute="bottom" secondItem="5ij-vO-hcC" secondAttribute="bottom" id="cE5-td-WCr"/>
                                     <constraint firstItem="YUX-aG-qae" firstAttribute="leading" secondItem="5ij-vO-hcC" secondAttribute="leading" id="eD0-aD-Qax"/>
@@ -729,7 +729,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="108" height="108"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="eye" catalog="system" width="128" height="81"/>
         <image name="gamecontroller" catalog="system" width="128" height="80"/>
