@@ -10,10 +10,12 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let session = SessionSingleton.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
+        session.printUserId() // методы 
+        session.initToken() // синглтона
         return true
     }
 

@@ -25,6 +25,7 @@
 		356F01232871F90E0033169A /* NewsfeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F01222871F90E0033169A /* NewsfeedController.swift */; };
 		356F012728730E920033169A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F012628730E920033169A /* PostCell.swift */; };
 		356F012A28731BDE0033169A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356F012928731BDE0033169A /* Post.swift */; };
+		358C7D18289D541D0078329C /* SessionSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358C7D17289D541D0078329C /* SessionSingleton.swift */; };
 		3597100328735FA500F93F9C /* CollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3597100228735FA500F93F9C /* CollageView.swift */; };
 		35A7BE96286B667700A03FE5 /* ColorGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */; };
 		35E4F8A42868C5E800A95E07 /* HeartControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4F8A32868C5E800A95E07 /* HeartControl.swift */; };
@@ -58,6 +59,7 @@
 		356F01222871F90E0033169A /* NewsfeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedController.swift; sourceTree = "<group>"; };
 		356F012628730E920033169A /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		356F012928731BDE0033169A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		358C7D17289D541D0078329C /* SessionSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSingleton.swift; sourceTree = "<group>"; };
 		3597100228735FA500F93F9C /* CollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageView.swift; sourceTree = "<group>"; };
 		35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGameViewController.swift; sourceTree = "<group>"; };
 		35E4F8A32868C5E800A95E07 /* HeartControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartControl.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				3535F8602871EF69007DF058 /* Newsfeed */,
 				3535F85E2871EF12007DF058 /* Game */,
 				35EA8501285B820A00EAA1BB /* AppDelegate.swift */,
+				358C7D17289D541D0078329C /* SessionSingleton.swift */,
 				35EA8503285B820A00EAA1BB /* SceneDelegate.swift */,
 				35241A3A2863716500FA20C5 /* Controller */,
 				35241A3D286371FB00FA20C5 /* Extension */,
@@ -428,6 +431,7 @@
 				35241A392863613B00FA20C5 /* GroupCollection.swift in Sources */,
 				356F012A28731BDE0033169A /* Post.swift in Sources */,
 				35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */,
+				358C7D18289D541D0078329C /* SessionSingleton.swift in Sources */,
 				35E4F8A42868C5E800A95E07 /* HeartControl.swift in Sources */,
 				35F3978228858AFF00A25405 /* CustomUINavigationController.swift in Sources */,
 				35EA8502285B820A00EAA1BB /* AppDelegate.swift in Sources */,
