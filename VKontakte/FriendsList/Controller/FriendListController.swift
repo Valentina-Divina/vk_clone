@@ -9,7 +9,9 @@ import UIKit
 
 class FriendListController: UITableViewController {
     
-    let session = SessionSingleton.shared // ссылаемся на синглтон 
+    let session = SessionSingleton.shared // ссылаемся на синглтон
+    let service = Service.shared
+    
     
     var dictionarySectionToFriends = [String: [MyFriends]]()
     var friendTitles = [String]()
@@ -40,6 +42,7 @@ class FriendListController: UITableViewController {
         friendTitles = friendTitles.sorted()
         
         print(session.token) // синглтон
+        service.getFriends()
     }
     
     

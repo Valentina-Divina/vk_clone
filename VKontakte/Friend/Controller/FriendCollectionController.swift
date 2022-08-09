@@ -21,6 +21,8 @@ class FriendCollectionController: UICollectionViewController {
         super.viewDidLoad()
 //        self.collectionView!.register(FriendCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView!.register(UINib(nibName: "FriendGalleryView", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        
+        Service.shared.getFriendPhoto()
     }
     
     /*
