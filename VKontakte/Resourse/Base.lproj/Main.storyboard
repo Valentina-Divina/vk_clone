@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lGE-gO-70c">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -9,6 +9,42 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Vk LoginVC-->
+        <scene sceneID="EoW-FZ-GHw">
+            <objects>
+                <viewController id="lGE-gO-70c" customClass="VkLoginVC" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wo8-ED-pNT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9g-zq-7LQ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="759"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="We9-CZ-W3c"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="We9-CZ-W3c" firstAttribute="bottom" secondItem="h9g-zq-7LQ" secondAttribute="bottom" constant="15" id="2vg-On-eBS"/>
+                            <constraint firstItem="h9g-zq-7LQ" firstAttribute="top" secondItem="We9-CZ-W3c" secondAttribute="top" id="2xq-fZ-03e"/>
+                            <constraint firstItem="h9g-zq-7LQ" firstAttribute="trailing" secondItem="We9-CZ-W3c" secondAttribute="trailing" id="5JC-aQ-8zb"/>
+                            <constraint firstItem="h9g-zq-7LQ" firstAttribute="leading" secondItem="We9-CZ-W3c" secondAttribute="leading" id="yTa-Tb-f5M"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8lV-TI-Ssf"/>
+                    <connections>
+                        <outlet property="webView" destination="h9g-zq-7LQ" id="sAc-zr-nQy"/>
+                        <segue destination="usD-p8-1OW" kind="show" id="XkD-lr-lE1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iPS-Hn-mwr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1030" y="805"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -27,9 +63,6 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Войти"/>
-                                        <connections>
-                                            <action selector="nextScene:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HmW-Mb-9wJ"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="VKontakte Clone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulk-s1-aTN">
                                         <rect key="frame" x="117" y="260" width="180" height="30"/>
@@ -109,17 +142,16 @@
                         <outlet property="imageAnimate" destination="YUX-aG-qae" id="PqK-K6-R6l"/>
                         <outlet property="textLogin" destination="mYu-3D-7Ki" id="ESj-eL-u17"/>
                         <outlet property="textPassword" destination="a5y-Ep-MVN" id="k0e-zl-ykI"/>
-                        <segue destination="usD-p8-1OW" kind="show" identifier="Login" id="YiP-2U-VJ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2186.9565217391305" y="804.91071428571422"/>
+            <point key="canvasLocation" x="-3219" y="1397"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="ta7-R1-T2n">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="usD-p8-1OW" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabView" modalPresentationStyle="fullScreen" id="usD-p8-1OW" customClass="TabViewController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="dxs-3R-5hF"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E5Y-sl-YUJ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
@@ -135,14 +167,14 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Gz-Ox-NV2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1113" y="805"/>
+            <point key="canvasLocation" x="-202.89855072463769" y="804.91071428571422"/>
         </scene>
         <!--Newsfeed Controller-->
         <scene sceneID="03e-Ja-p7e">
             <objects>
                 <tableViewController id="xb9-71-51U" customClass="NewsfeedController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="1on-Wg-l9I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -294,7 +326,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXg-Yr-Gy6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="492.75362318840581" y="1139.7321428571429"/>
+            <point key="canvasLocation" x="1402.8985507246377" y="1139.7321428571429"/>
         </scene>
         <!--Friends-->
         <scene sceneID="NaI-Xv-bI9">
@@ -304,7 +336,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="1mA-UF-oTq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sd5-jY-uaZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -314,18 +346,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mrt-G3-CPB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-297" y="452"/>
+            <point key="canvasLocation" x="613.04347826086962" y="451.33928571428567"/>
         </scene>
         <!--Color Game View Controller-->
         <scene sceneID="Z1o-LW-Q7O">
             <objects>
                 <viewController id="zLE-i9-jJH" customClass="ColorGameViewController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vqZ-Ld-y1p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="q" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6W4-2y-Qd5">
-                                <rect key="frame" x="53" y="514" width="67" height="116"/>
+                                <rect key="frame" x="53" y="514" width="67" height="170"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
@@ -337,7 +369,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="w" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gnA-Z7-p9x">
-                                <rect key="frame" x="172.5" y="514" width="69" height="116"/>
+                                <rect key="frame" x="172.5" y="514" width="69" height="170"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Цвет 2">
@@ -348,13 +380,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labelhgghjgjh" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQK-w0-9K2">
-                                <rect key="frame" x="147.5" y="409.5" width="119" height="23"/>
+                                <rect key="frame" x="147.5" y="436.5" width="119" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="e" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeB-CA-lyc">
-                                <rect key="frame" x="289" y="514" width="69" height="116"/>
+                                <rect key="frame" x="289" y="514" width="69" height="170"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
@@ -408,7 +440,7 @@
                 <navigationController id="OJk-kj-kca" customClass="CustomNavigationController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" image="person.3" catalog="system" selectedImage="person.3.fill" id="Dbe-zb-6GS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BSS-kD-A9J">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -424,7 +456,7 @@
             <objects>
                 <tableViewController id="fds-Qm-o5I" customClass="FriendListController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="FJc-Z3-9DX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -488,14 +520,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXv-D1-Rd1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493" y="451"/>
+            <point key="canvasLocation" x="1402.8985507246377" y="450.66964285714283"/>
         </scene>
         <!--Friend Collection Controller-->
         <scene sceneID="afu-L8-Bzj">
             <objects>
                 <collectionViewController id="zVE-ht-6ew" customClass="FriendCollectionController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="I3S-7y-DFZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="NZx-MJ-00W">
@@ -535,18 +567,18 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Emo-JZ-aRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="451"/>
+            <point key="canvasLocation" x="2244.927536231884" y="450.66964285714283"/>
         </scene>
         <!--Full Screen View Controller-->
         <scene sceneID="Bck-BD-yI0">
             <objects>
                 <viewController storyboardIdentifier="FullScreenViewControllerID" id="BZd-wv-uUP" customClass="FullScreenViewController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCi-wl-IDv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GSK-S2-E7F">
-                                <rect key="frame" x="0.0" y="334.5" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="350.5" width="414" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="s06-AW-ScD"/>
                                 </constraints>
@@ -567,14 +599,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjb-zL-pfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2082.608695652174" y="450.66964285714283"/>
+            <point key="canvasLocation" x="2992.753623188406" y="450.66964285714283"/>
         </scene>
         <!--Group List Controller-->
         <scene sceneID="HrU-M4-VK0">
             <objects>
                 <tableViewController id="0lQ-tQ-vWE" customClass="GroupListController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="lxu-hZ-UQX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -636,7 +668,7 @@
             <objects>
                 <tableViewController id="ECk-pG-JtE" customClass="OtherGroupsController" customModule="VKontakte" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="hkB-do-V7Y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -696,7 +728,7 @@
                     <tabBarItem key="tabBarItem" title="Game" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Oef-5H-TfQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bqh-4c-k5O">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -715,7 +747,7 @@
                     <tabBarItem key="tabBarItem" title="News" image="rectangle.on.rectangle" catalog="system" selectedImage="rectangle.fill.on.rectangle.angled.fill" id="ysU-WR-l7S"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CuX-i0-bMe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -725,7 +757,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuO-6t-pll" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-262" y="1140"/>
+            <point key="canvasLocation" x="647.82608695652175" y="1139.7321428571429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yUm-gk-NRY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ghp-zQ-zIo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oo2-Lv-5ZZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lGE-gO-70c" kind="relationship" relationship="rootViewController" id="zlV-t6-ViW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kyZ-8Y-av0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2043.4782608695655" y="804.91071428571422"/>
         </scene>
     </scenes>
     <resources>

@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var imageAnimate: UIImageView!
+    @IBOutlet weak var imageAnimate: UIImageView!
     @IBOutlet var image: UIImageView!
     @IBOutlet var textLogin: UITextField!
     @IBOutlet var textPassword: UITextField!
@@ -33,10 +33,13 @@ class ViewController: UIViewController {
         }
     }
     
+    let url = URL(string: "http://samples.openweathermap.org/data/2.5/forecast")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         logoAnimation()
-    }
+            }
+    
     
     func showAnimatingDotsInImageView() {
         
