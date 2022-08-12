@@ -1,6 +1,7 @@
 
 .DS_Store
 .Trashes
+Pods/
 *.swp
 # profile - REMOVED temporarily (on double-checking, I can't find it in OS X docs?)
 #profile

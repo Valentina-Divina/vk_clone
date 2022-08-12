@@ -12,16 +12,23 @@ class GroupListController: UITableViewController {
     let session = SessionSingleton.shared // ссылаемся на синглтон
     let service = Service.shared
     
-    private var groups: [GroupCollection] = [
-        GroupCollection(name: "Молоко+", image: UIImage(named: "cow")), // image: UIImage(named: "cow")),
-        GroupCollection(name: "Karelia aesthetic", image: UIImage(named: "karelia")),
-        GroupCollection(name: "Средневековая таверна", image: UIImage(named: "tavern")),
-        GroupCollection(name: "Книга Средиземья", image: UIImage(named: "tolkin")),
-        GroupCollection(name: "Папка с папками", image: UIImage(named: "folder")),
-        GroupCollection(name: "Прерафаэлиты", image: UIImage(named: "preraf")),
-        GroupCollection(name: "EVIL SPACE", image: UIImage(named: "space")),
-        GroupCollection(name: "Мемы", image: UIImage(named: "memes")),
-    ]
+    var groups = [GroupCollection]()  {// хз
+        didSet {
+            update()
+            tableView.reloadData()
+        }
+    }
+    
+    //    private var groups: [GroupCollection] = [
+    //        GroupCollection(name: "Молоко+", image: UIImage(named: "cow")), // image: UIImage(named: "cow")),
+    //        GroupCollection(name: "Karelia aesthetic", image: UIImage(named: "karelia")),
+    //        GroupCollection(name: "Средневековая таверна", image: UIImage(named: "tavern")),
+    //        GroupCollection(name: "Книга Средиземья", image: UIImage(named: "tolkin")),
+    //        GroupCollection(name: "Папка с папками", image: UIImage(named: "folder")),
+    //        GroupCollection(name: "Прерафаэлиты", image: UIImage(named: "preraf")),
+    //        GroupCollection(name: "EVIL SPACE", image: UIImage(named: "space")),
+    //        GroupCollection(name: "Мемы", image: UIImage(named: "memes")),
+    //    ]
     
     private var filteredGroups = [GroupCollection]()
     private let searchController = UISearchController(searchResultsController: nil) // экземпляр класса SearchController
@@ -33,6 +40,25 @@ class GroupListController: UITableViewController {
         return searchController.isActive && !searchBarIsEmpty
     }
     
+    var dictionarySectionToGroup = [String: [GroupCollection]]()
+    var groupTitles = [String]()
+    
+    private func update() {
+        for group in groups {
+            let groupKey = String(group.name.prefix(1))
+            if var groupValues = dictionarySectionToGroup[groupKey] {
+                groupValues.append(group)
+                dictionarySectionToGroup[groupKey] = groupValues
+            } else {
+                dictionarySectionToGroup[groupKey] = [group]
+            }
+        }
+        groupTitles = [String](dictionarySectionToGroup.keys)
+        groupTitles = groupTitles.sorted()
+        
+        print(session.token) // синглтон
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +69,12 @@ class GroupListController: UITableViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        service.getGroups()
-        service.getGroupsBySearch(query: "Шумерля")
+        update()
+        service.getGroups { result in
+            self.groups = result.response.items.map({ group in
+                GroupCollection(name: group.name , imageUrl: URL(string: group.photo200), id: group.id)
+            })
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int { // количество секций
@@ -74,7 +104,8 @@ class GroupListController: UITableViewController {
         
         cell.lableGroupCell.text = group.name
         cell.imageGroupCell.layer.cornerRadius = 40
-        cell.imageGroupCell.image = group.image
+        cell.imageGroupCell.load(url: group.imageUrl)
+        
         
         return cell
     }
@@ -86,7 +117,7 @@ class GroupListController: UITableViewController {
             
             let newGroup = selected.otherGroups[indexPath.row]
             if !groups.contains(where: {$0.name == newGroup.name}) {
-                groups.append(GroupCollection(name: newGroup.name, image: newGroup.image))
+                groups.append(GroupCollection(name: newGroup.name, imageUrl: nil, id: 1))
             }
             tableView.reloadData()
         }

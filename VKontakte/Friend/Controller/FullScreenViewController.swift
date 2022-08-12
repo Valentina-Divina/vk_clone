@@ -6,120 +6,81 @@
 //
 
 import UIKit
+import ScalingCarousel
 
-class FullScreenViewController: UIViewController {
+class FullScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var friend: MyFriends!
+    
     var index: Int!
+    var allPhotos:[URL?] = []
+    
+    var scalingCarousel: ScalingCarouselView! = nil
     
     var baseLeftPosition = 0.0
     var baseCenterPosition = 0.0
     var baseRightPosition = 0.0
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let recognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan))
-        view.addGestureRecognizer(recognizer)
-        allPhotos = friend.photoGallery
-        photoCurent.image = allPhotos[index]
+        // Create our carousel
+        scalingCarousel = ScalingCarouselView(withFrame: view.frame, andInset: 20)
+        scalingCarousel.dataSource = self
+        scalingCarousel.delegate = self
+        scalingCarousel.translatesAutoresizingMaskIntoConstraints = false
         
-        baseLeftPosition = CGFloat(0-photoCurent.frame.width)
-        baseRightPosition = CGFloat(photoCurent.frame.width)
-        baseCenterPosition = CGFloat(0)
+        // Register our custom cell for dequeueing
+        scalingCarousel.register(ScalableCell.self, forCellWithReuseIdentifier: "cell")
         
+        // Add our carousel as a subview
+        view.addSubview(scalingCarousel)
         
-        leftImage.frame = photoCurent.frame
-        leftImage.layer.position.x = baseLeftPosition
-        leftImage.contentMode = .scaleAspectFit
+        // Add Constraints
+        scalingCarousel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        scalingCarousel.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        scalingCarousel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scalingCarousel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        scalingCarousel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50).isActive = true
+        scalingCarousel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         
-        rightImage.frame = photoCurent.frame
-        rightImage.layer.position.x = baseRightPosition
-        rightImage.contentMode = .scaleAspectFit
-       
+        scalingCarousel.scrollDirection = .horizontal
         
-        view.addSubview(leftImage)
-        view.addSubview(rightImage)
     }
     
-    @IBOutlet weak var photoCurent: UIImageView!
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return allPhotos.count
+    }
     
-    var allPhotos:[UIImage?] = []
-    
-    var leftImage = UIImageView()
-    var rightImage = UIImageView()
-    
-    
-    // MARK: - Animator
-    var interactiveAnimator: UIViewPropertyAnimator!
-    
-    @objc func onPan(_ recognizer: UIPanGestureRecognizer) {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch recognizer.state {
-        case .began:
-            interactiveAnimator?.startAnimation()
-            self.rightImage.frame.origin.x = baseRightPosition
-            self.leftImage.frame.origin.x = baseLeftPosition
-            interactiveAnimator = UIViewPropertyAnimator(
-                duration: 1,
-                curve: .easeInOut,
-                animations: {
-                    if recognizer.translation(in: self.view).x < 0 {
-                        if  self.index < self.allPhotos.count - 1  {
-                            self.rightImage.image = self.allPhotos[self.index + 1]
-                            
-                            
-                            self.photoCurent.frame.origin.x = self.baseLeftPosition
-            
-                            
-                            self.rightImage.frame.origin.x = self.baseCenterPosition
-                            
-                        }
-                    } else {
-                        if self.index != 0 {
-                            self.leftImage.image = self.allPhotos[self.index - 1]
-                            
-                            self.photoCurent.frame.origin.x = self.baseRightPosition
-                          
-                            self.leftImage.frame.origin.x = self.baseCenterPosition
-                        }
-                        
-                    }
-                })
-            
-            interactiveAnimator.addCompletion { _ in
-                self.leftImage.image = nil
-                self.rightImage.image = nil
-                self.photoCurent.image = self.allPhotos[self.index]
-                self.leftImage.transform = .identity
-                self.rightImage.transform = .identity
-                self.photoCurent.transform = .identity
-            }
-            
-            interactiveAnimator.pauseAnimation()
-        case .changed:
-            let translation = recognizer.translation(in: self.view)
-            var fraction = abs(translation.x / (view.frame.width/2))
-            if interactiveAnimator?.isReversed == true { fraction *= -1 }
-            print("fraction", fraction)
-            interactiveAnimator.fractionComplete = fraction
-            
-        case .ended:
-            
-            if recognizer.translation(in: self.view).x < 0 {
-                if  index < allPhotos.count - 1  {
-                    self.index += 1
-                }
-            } else {
-                if index != 0 {
-                    self.index -= 1
-                }
-            }
-            
-            interactiveAnimator?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-        default: break
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ScalableCell else {
+            preconditionFailure("Error")
         }
         
+        (cell.mainView as! UIImageView).load(url: allPhotos[indexPath.row])
         
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        
+        return cell
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if scalingCarousel != nil {
+            scalingCarousel.deviceRotated()
+        }
+    }
+    
+    var onceOnly = false
+    
+    internal func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if !onceOnly {
+            let indexToScrollTo = IndexPath(item: index, section: 0)
+            self.scalingCarousel.scrollToItem(at: indexToScrollTo, at: .left, animated: false)
+            onceOnly = true
+        }
     }
 }

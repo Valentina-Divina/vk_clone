@@ -12,23 +12,18 @@ class FriendListController: UITableViewController {
     let session = SessionSingleton.shared // ссылаемся на синглтон
     let service = Service.shared
     
+    var friends = [MyFriends]()  {
+        didSet {
+            update()
+            tableView.reloadData()
+        }
+    }
+    
     
     var dictionarySectionToFriends = [String: [MyFriends]]()
     var friendTitles = [String]()
     
-    let friends = [
-        MyFriends(name: "Guts Berserk", image: UIImage(named: "guts"), photoGallery: [UIImage(named: "cow")!,UIImage(named: "ilon")!,UIImage(named: "misha")!,UIImage(named: "kolya")!,UIImage(named: "female")!,UIImage(named: "mark")!]),
-        MyFriends(name: "Николай Мозгляков", image: UIImage(named: "kolya"), photoGallery: [UIImage(named: "cow")!]),
-        MyFriends(name: "Сергей Кочетков", image: UIImage(named: "serg"), photoGallery: [UIImage(named: "cow")!]),
-        MyFriends(name: "Анастасия Землепашская", image: UIImage(named: "female"), photoGallery: [UIImage(named: "cow")!]),
-        MyFriends(name: "Михаил Изпод-Вылез", image: UIImage(named: "misha"), photoGallery: [UIImage(named: "cow")!]),
-        MyFriends(name: "Илон Маск", image: UIImage(named: "ilon"), photoGallery: [UIImage(named: "cow")!]),
-        MyFriends(name: "Марк Аврелий", image: UIImage(named: "mark"), photoGallery: [UIImage(named: "cow")!])
-    ]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    private func update() {
         for friend in friends {
             let friendKey = String(friend.name.prefix(1))
             if var friendValues = dictionarySectionToFriends[friendKey] {
@@ -42,7 +37,16 @@ class FriendListController: UITableViewController {
         friendTitles = friendTitles.sorted()
         
         print(session.token) // синглтон
-        service.getFriends()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        update()
+        service.getFriends { result in
+            self.friends = result.response.items.map({ user in
+                MyFriends(name: user.firstName + " " + user.lastName , imageUrl: URL(string: user.photo), id: user.id)
+            })
+        }
     }
     
     
@@ -68,7 +72,7 @@ class FriendListController: UITableViewController {
         let friendKey = friendTitles[indexPath.section]
         let friend = dictionarySectionToFriends[friendKey]?[indexPath.row]
         
-        cell.customImageView.image = friend?.image
+        cell.customImageView.load(url: friend?.imageUrl)
         cell.myFriendsLable.text = friend?.name
         
         cell.setup()
