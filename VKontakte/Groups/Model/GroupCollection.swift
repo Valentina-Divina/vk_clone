@@ -9,10 +9,12 @@ import UIKit
 
 class GroupCollection {
     let name: String
-    let image: UIImage?
+    let imageUrl: URL?
+    let id: Int
     
-    init(name: String, image: UIImage? = nil) {
+    init(name: String, imageUrl: URL? = nil, id: Int) {
         self.name = name
-        self.image = image
+        self.imageUrl = imageUrl
+        self.id = id
     }
 }

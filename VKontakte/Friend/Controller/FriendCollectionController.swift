@@ -14,37 +14,33 @@ class FriendCollectionController: UICollectionViewController {
     let columnCount = 2
     let offset: CGFloat = 2.0
     
-    //  var image: UIImage? = nil
     var friend: MyFriends? = nil
-    
+    var allPhotos: [URL] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.collectionView!.register(FriendCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
         self.collectionView!.register(UINib(nibName: "FriendGalleryView", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         
-        Service.shared.getFriendPhoto()
+        Service.shared.getFriendPhoto(complection: { result in
+            self.allPhotos = result.response.items.map({ item in
+                URL(string: item.sizes.last?.url ?? "")!
+            })
+        }, ownerId: self.friend?.id ?? 0)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
     
-    // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return friend?.photoGallery.count ?? 0
+        return allPhotos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -52,56 +48,17 @@ class FriendCollectionController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCollectionCellID", for: indexPath) as? FriendGalleryView else {
             preconditionFailure("Error")
         }
-        
-        cell.imageView.image = friend?.photoGallery[indexPath.row]
-        
-        // Configure the cell
+        cell.imageView.load(url: allPhotos[indexPath.row])
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "FullScreenViewControllerID") as! FullScreenViewController
-        vc.friend = self.friend
+        vc.allPhotos = self.allPhotos
         vc.index = indexPath.item
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    
-    // MARK: UICollectionViewDelegate
-    
-    /*
-     // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-     
-     }
-     */
-    
-    
-    
 }
 
 extension FriendCollectionController: UICollectionViewDelegateFlowLayout {

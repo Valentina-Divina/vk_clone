@@ -28,6 +28,7 @@
 		356FF41028A1594D007A7BA1 /* VkLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356FF40F28A1594D007A7BA1 /* VkLoginVC.swift */; };
 		356FF41428A280D6007A7BA1 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356FF41328A280D6007A7BA1 /* TabViewController.swift */; };
 		356FF41628A28BB7007A7BA1 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356FF41528A28BB7007A7BA1 /* Service.swift */; };
+		356FF41928A547FE007A7BA1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356FF41828A547FE007A7BA1 /* User.swift */; };
 		358C7D18289D541D0078329C /* SessionSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358C7D17289D541D0078329C /* SessionSingleton.swift */; };
 		3597100328735FA500F93F9C /* CollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3597100228735FA500F93F9C /* CollageView.swift */; };
 		35A7BE96286B667700A03FE5 /* ColorGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */; };
@@ -39,6 +40,10 @@
 		35EA850B285B820B00EAA1BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35EA850A285B820B00EAA1BB /* Assets.xcassets */; };
 		35EA850E285B820B00EAA1BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35EA850C285B820B00EAA1BB /* LaunchScreen.storyboard */; };
 		35EBB258285E0F26009FEFE0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBB257285E0F26009FEFE0 /* UIViewController+Extension.swift */; };
+		35EF2C9228A5748600AAD848 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EF2C9128A5748600AAD848 /* Photo.swift */; };
+		35EF2C9428A574A800AAD848 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EF2C9328A574A800AAD848 /* Group.swift */; };
+		35EF2C9628A58E3700AAD848 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EF2C9528A58E3700AAD848 /* Utils.swift */; };
+		35EF2C9828A5B78B00AAD848 /* ScalableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EF2C9728A5B78B00AAD848 /* ScalableCell.swift */; };
 		35F3978228858AFF00A25405 /* CustomUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F3978128858AFF00A25405 /* CustomUINavigationController.swift */; };
 		35F3978428858B3800A25405 /* PopPushAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F3978328858B3800A25405 /* PopPushAnimators.swift */; };
 		DC66519F6321F16C7CC73F46 /* Pods_VKontakte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9C34808385667F8A83D8B6 /* Pods_VKontakte.framework */; };
@@ -67,6 +72,7 @@
 		356FF40F28A1594D007A7BA1 /* VkLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginVC.swift; sourceTree = "<group>"; };
 		356FF41328A280D6007A7BA1 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		356FF41528A28BB7007A7BA1 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		356FF41828A547FE007A7BA1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		358C7D17289D541D0078329C /* SessionSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSingleton.swift; sourceTree = "<group>"; };
 		3597100228735FA500F93F9C /* CollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageView.swift; sourceTree = "<group>"; };
 		35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGameViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +86,10 @@
 		35EA850D285B820B00EAA1BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35EA850F285B820B00EAA1BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35EBB257285E0F26009FEFE0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		35EF2C9128A5748600AAD848 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		35EF2C9328A574A800AAD848 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		35EF2C9528A58E3700AAD848 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		35EF2C9728A5B78B00AAD848 /* ScalableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableCell.swift; sourceTree = "<group>"; };
 		35F3978128858AFF00A25405 /* CustomUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUINavigationController.swift; sourceTree = "<group>"; };
 		35F3978328858B3800A25405 /* PopPushAnimators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPushAnimators.swift; sourceTree = "<group>"; };
 		4280352A7C923C5A6DEC93FD /* Pods-VKontakte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKontakte.debug.xcconfig"; path = "Target Support Files/Pods-VKontakte/Pods-VKontakte.debug.xcconfig"; sourceTree = "<group>"; };
@@ -239,6 +249,7 @@
 				35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */,
 				35653CC52879FBBD000406AE /* FriendGalleryView.swift */,
 				35653CC62879FBBD000406AE /* FriendGalleryView.xib */,
+				35EF2C9728A5B78B00AAD848 /* ScalableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,6 +332,7 @@
 		356FF41728A2B740007A7BA1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				35EF2C9028A5746F00AAD848 /* Model */,
 				358C7D17289D541D0078329C /* SessionSingleton.swift */,
 				356FF41528A28BB7007A7BA1 /* Service.swift */,
 			);
@@ -332,6 +344,7 @@
 			children = (
 				35F3978128858AFF00A25405 /* CustomUINavigationController.swift */,
 				35F3978328858B3800A25405 /* PopPushAnimators.swift */,
+				35EF2C9528A58E3700AAD848 /* Utils.swift */,
 			);
 			path = UIHelpers;
 			sourceTree = "<group>";
@@ -373,6 +386,16 @@
 				35241A4F2864964100FA20C5 /* Friend */,
 			);
 			path = VKontakte;
+			sourceTree = "<group>";
+		};
+		35EF2C9028A5746F00AAD848 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				356FF41828A547FE007A7BA1 /* User.swift */,
+				35EF2C9128A5748600AAD848 /* Photo.swift */,
+				35EF2C9328A574A800AAD848 /* Group.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F7C29ACC0E6CD8987BBC8B60 /* Frameworks */ = {
@@ -499,13 +522,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35EF2C9428A574A800AAD848 /* Group.swift in Sources */,
 				35241A52286499FF00FA20C5 /* FriendCollectionCell.swift in Sources */,
 				35EBB258285E0F26009FEFE0 /* UIViewController+Extension.swift in Sources */,
 				35241A3128620FD300FA20C5 /* GroupListController.swift in Sources */,
 				356FF41028A1594D007A7BA1 /* VkLoginVC.swift in Sources */,
+				356FF41928A547FE007A7BA1 /* User.swift in Sources */,
 				35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */,
 				35241A4E2864963300FA20C5 /* FriendCollectionController.swift in Sources */,
+				35EF2C9828A5B78B00AAD848 /* ScalableCell.swift in Sources */,
 				35653CCA287A0581000406AE /* FullScreenViewController.swift in Sources */,
+				35EF2C9628A58E3700AAD848 /* Utils.swift in Sources */,
 				35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */,
 				35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */,
 				35F3978428858B3800A25405 /* PopPushAnimators.swift in Sources */,
@@ -514,6 +541,7 @@
 				356FF41628A28BB7007A7BA1 /* Service.swift in Sources */,
 				35EA8506285B820A00EAA1BB /* ViewController.swift in Sources */,
 				35653CC72879FBBD000406AE /* FriendGalleryView.swift in Sources */,
+				35EF2C9228A5748600AAD848 /* Photo.swift in Sources */,
 				35241A3728621A2700FA20C5 /* GroupCell.swift in Sources */,
 				35241A392863613B00FA20C5 /* GroupCollection.swift in Sources */,
 				356F012A28731BDE0033169A /* Post.swift in Sources */,

@@ -8,13 +8,15 @@
 import UIKit
 
 class MyFriends {
+    let id: Int
     let name: String
-    let image: UIImage?
+    let imageUrl: URL?
     var photoGallery: [UIImage]
     
-    init(name: String, image: UIImage? = nil, photoGallery: [UIImage] = []) {
+    init(name: String, imageUrl: URL? = nil, photoGallery: [UIImage] = [], id: Int) {
         self.name = name
-        self.image = image
+        self.imageUrl = imageUrl
         self.photoGallery = photoGallery
+        self.id = id
     }
 }
