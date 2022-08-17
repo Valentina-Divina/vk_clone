@@ -46,6 +46,7 @@
 		35EF2C9828A5B78B00AAD848 /* ScalableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EF2C9728A5B78B00AAD848 /* ScalableCell.swift */; };
 		35F3978228858AFF00A25405 /* CustomUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F3978128858AFF00A25405 /* CustomUINavigationController.swift */; };
 		35F3978428858B3800A25405 /* PopPushAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F3978328858B3800A25405 /* PopPushAnimators.swift */; };
+		35F761E828ACEE2D000A8412 /* WheatherApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F761E728ACEE2D000A8412 /* WheatherApi.swift */; };
 		DC66519F6321F16C7CC73F46 /* Pods_VKontakte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9C34808385667F8A83D8B6 /* Pods_VKontakte.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		35EF2C9728A5B78B00AAD848 /* ScalableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableCell.swift; sourceTree = "<group>"; };
 		35F3978128858AFF00A25405 /* CustomUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUINavigationController.swift; sourceTree = "<group>"; };
 		35F3978328858B3800A25405 /* PopPushAnimators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPushAnimators.swift; sourceTree = "<group>"; };
+		35F761E728ACEE2D000A8412 /* WheatherApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheatherApi.swift; sourceTree = "<group>"; };
 		4280352A7C923C5A6DEC93FD /* Pods-VKontakte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKontakte.debug.xcconfig"; path = "Target Support Files/Pods-VKontakte/Pods-VKontakte.debug.xcconfig"; sourceTree = "<group>"; };
 		C59F57D50AA9BC39E729B377 /* Pods-VKontakte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKontakte.release.xcconfig"; path = "Target Support Files/Pods-VKontakte/Pods-VKontakte.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -352,6 +354,7 @@
 		35EA84F5285B820A00EAA1BB = {
 			isa = PBXGroup;
 			children = (
+				35F761E628ACEDF7000A8412 /* Other */,
 				35EA8500285B820A00EAA1BB /* VKontakte */,
 				35EA84FF285B820A00EAA1BB /* Products */,
 				2F8241C77347D2D42E02D387 /* Pods */,
@@ -396,6 +399,14 @@
 				35EF2C9328A574A800AAD848 /* Group.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		35F761E628ACEDF7000A8412 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				35F761E728ACEE2D000A8412 /* WheatherApi.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		F7C29ACC0E6CD8987BBC8B60 /* Frameworks */ = {
@@ -528,6 +539,7 @@
 				35241A3128620FD300FA20C5 /* GroupListController.swift in Sources */,
 				356FF41028A1594D007A7BA1 /* VkLoginVC.swift in Sources */,
 				356FF41928A547FE007A7BA1 /* User.swift in Sources */,
+				35F761E828ACEE2D000A8412 /* WheatherApi.swift in Sources */,
 				35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */,
 				35241A4E2864963300FA20C5 /* FriendCollectionController.swift in Sources */,
 				35EF2C9828A5B78B00AAD848 /* ScalableCell.swift in Sources */,
