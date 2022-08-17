@@ -8,7 +8,9 @@
 import UIKit
 
 class ColorGameViewController: UIViewController {
-
+    
+    let weater = WeatherApi()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         allButton.append(colorButton1)
@@ -17,8 +19,10 @@ class ColorGameViewController: UIViewController {
         randomizeColors()
         
         allButton.forEach { btn in
-
+            
         }
+        
+        weater.weather()
     }
     
     @IBOutlet var colorLabel: UILabel!
@@ -76,7 +80,7 @@ class ColorGameViewController: UIViewController {
                                            preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Начать заново",
                                           style: .default,
-                                         handler: nil))
+                                          handler: nil))
             self.present(alert, animated: true, completion: nil)
             rounds = 0
             point = 0
@@ -94,7 +98,7 @@ class ColorGameViewController: UIViewController {
         }
         return createdHexColor
     }
-
+    
 }
 
 
