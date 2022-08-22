@@ -71,9 +71,9 @@ class GroupListController: UITableViewController {
         
         update()
         service.getGroups { result in
-            self.groups = result.response.items.map({ group in
+            self.groups = result.response?.items.map({ group in
                 GroupCollection(name: group.name , imageUrl: URL(string: group.photo200), id: group.id)
-            })
+            }) ?? []
         }
     }
     

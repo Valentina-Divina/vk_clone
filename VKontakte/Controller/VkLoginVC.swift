@@ -20,8 +20,6 @@ class VkLoginVC: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     let appId = "51396938"
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,8 +40,6 @@ class VkLoginVC: UIViewController {
             let request = URLRequest(url: url!)
             webView.load(request)
         }
-        
-        
     }
 }
 
