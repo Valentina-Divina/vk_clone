@@ -43,9 +43,9 @@ class FriendListController: UITableViewController {
         super.viewDidLoad()
         update()
         service.getFriends { result in
-            self.friends = result.response.items.map({ user in
+            self.friends = result.response?.items.map({ user in
                 MyFriends(name: user.firstName + " " + user.lastName , imageUrl: URL(string: user.photo), id: user.id)
-            })
+            }) ?? []
         }
     }
     

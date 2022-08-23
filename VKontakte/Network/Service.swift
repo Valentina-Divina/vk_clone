@@ -7,17 +7,22 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
 class Service {
     // Отдельный синглтон для методов
     static let shared = Service()
     private init(){}
-    let baseUrl = "https://api.vk.com/method/"
     
+    private let userRepository = UserRepository()
+    private let photoRepository = PhotoRepository()
+    private let groupRepository = GroupRepository()
+    
+    let baseUrl = "https://api.vk.com/method/"
     let token = SessionSingleton.shared.token
     
     // получаем друзей
-    func getFriends(complection: @escaping (UserStruct)->()) {
+    func getFriends(complection: @escaping (UserResponse)->()) {
         let url = baseUrl + "/friends.get"
         let parameters: Parameters = [
             "access_token": token,
@@ -26,14 +31,16 @@ class Service {
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             if let data = response.data {
-                let user = try! JSONDecoder().decode(UserStruct.self, from: data) //  раскодировать JSON одной строкой
+                let user = try! JSONDecoder().decode(UserResponse.self, from: data) //  раскодировать JSON одной строкой
+                print(user)
+                self.userRepository.saveUserData(user) //realm
                 complection(user)
             }
         }
     }
     
     // получаем группы
-    func getGroups(complection: @escaping (GroupStruct)->()) {
+    func getGroups(complection: @escaping (GroupResponse)->()) {
         let url = baseUrl + "/groups.get"
         let parameters: Parameters = [
             "access_token": token,
@@ -42,14 +49,15 @@ class Service {
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             if let data = response.data {
-                let groups = try! JSONDecoder().decode(GroupStruct.self, from: data)
+                let groups = try! JSONDecoder().decode(GroupResponse.self, from: data)
+                self.groupRepository.saveGroupData(groups)
                 complection(groups)
             }
         }
     }
     
     // получаем фото друга
-    func getFriendPhoto(complection: @escaping (PhotosStruct)->(), ownerId: Int) {
+    func getFriendPhoto(complection: @escaping (PhotosResponse)->(), ownerId: Int) {
         let url = baseUrl + "/photos.get"
         let parameters: Parameters = [
             "access_token": token,
@@ -60,13 +68,12 @@ class Service {
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             if let data = response.data {
-                let photos = try! JSONDecoder().decode(PhotosStruct.self, from: data)
+                let photos = try! JSONDecoder().decode(PhotosResponse.self, from: data)
+                self.photoRepository.savePhotoData(photos)
                 complection(photos)
             }
-            
         }
     }
-    
     
     // поиск групп по запросу
     func getGroupsBySearch(query: String) {

@@ -6,32 +6,32 @@
 //
 
 import Foundation
-import UIKit
+import RealmSwift
 
-struct PhotosStruct: Decodable {
-    let response: ResponseFriendPhotos
+
+class PhotosResponse: Object, Decodable {
+    @Persisted var response: ResponseFriendPhotos?
 }
 
-struct ResponseFriendPhotos: Decodable {
-    let count: Int
-    let items: [ItemFriendPhotos]
+class ResponseFriendPhotos: Object, Decodable {
+    @Persisted var count: Int
+    @Persisted var items: List<ItemFriendPhotos>
 }
 
-
-struct ItemFriendPhotos: Decodable {
-    let sizes: [SizeFriendPhotos]
-    let likes: Like
-
+class ItemFriendPhotos: Object, Decodable {
+    @Persisted var sizes: List<SizeFriendPhotos>
+    //    @Persisted var likes: Like
+    
     enum CodingKeys: String, CodingKey {
-        case sizes, likes
-        
+        case sizes
+        //        case likes
     }
 }
 
-struct SizeFriendPhotos: Decodable {
-    let url: String
+class SizeFriendPhotos: Object, Decodable {
+    @Persisted var url: String
 }
 
-struct Like: Decodable {
-    let count: Int
+class Like: Object, Decodable {
+    @Persisted var count: Int
 }

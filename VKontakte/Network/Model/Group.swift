@@ -6,25 +6,22 @@
 //
 
 import Foundation
-import UIKit
-import Alamofire
+import RealmSwift
 
-struct GroupStruct: Decodable {
-    let response: GroupResponse
+class GroupResponse: Object, Decodable {
+    @Persisted var response: GroupResp?
 }
 
-
-struct GroupResponse: Decodable {
-    let count: Int
-    let items: [GroupItem]
+class GroupResp: Object, Decodable {
+    @Persisted var count: Int
+    @Persisted var items: List<GroupItem>
 }
 
-
-struct GroupItem: Decodable {
-    let id: Int
-    let name: String
-    let photo200: String
-
+class GroupItem: Object, Decodable {
+    @Persisted var id: Int
+    @Persisted var name: String
+    @Persisted var photo200: String
+    
     enum CodingKeys: String, CodingKey {
         case id, name
         case photo200 = "photo_200"

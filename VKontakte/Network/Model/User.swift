@@ -6,23 +6,23 @@
 //
 
 import Foundation
-import UIKit
+import RealmSwift
 
-struct UserStruct: Decodable {
-    let response: Response
+class UserResponse: Object, Decodable {
+    @Persisted var response: Response?
 }
 
-struct Response: Decodable { 
-    let count: Int
-    let items: [Item]
+class Response: Object, Decodable {
+    @Persisted var count: Int
+    @Persisted var items: List<Item>
 }
 
-struct Item: Decodable {
-    let id: Int
-    let photo: String
-    let firstName, lastName: String
+class Item: Object, Decodable {
+    @Persisted var id: Int
+    @Persisted var photo: String
+    @Persisted var firstName: String
+    @Persisted var lastName: String
     
-
     enum CodingKeys: String, CodingKey {
         case id
         case photo = "photo_200_orig"

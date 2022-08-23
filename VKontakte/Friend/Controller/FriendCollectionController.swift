@@ -27,9 +27,9 @@ class FriendCollectionController: UICollectionViewController {
         self.collectionView!.register(UINib(nibName: "FriendGalleryView", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         
         Service.shared.getFriendPhoto(complection: { result in
-            self.allPhotos = result.response.items.map({ item in
+            self.allPhotos = result.response?.items.map({ item in
                 URL(string: item.sizes.last?.url ?? "")!
-            })
+            }) ?? []
         }, ownerId: self.friend?.id ?? 0)
     }
     
