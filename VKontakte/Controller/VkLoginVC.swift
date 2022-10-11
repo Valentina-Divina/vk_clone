@@ -62,7 +62,7 @@ extension VkLoginVC: WKNavigationDelegate {
             }
         if let token = params["access_token"]{
             self.session.token = token // токен добавлен в синглтон
-            print("TOKEN TAG", token)
+//            print("TOKEN TAG", token)
             secondVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabView") as? TabViewController
             self.view.insertSubview((secondVC?.view)!, at: 9) // добавить потом проверку
         }

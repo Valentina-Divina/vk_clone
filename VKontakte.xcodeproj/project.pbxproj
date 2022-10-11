@@ -19,9 +19,6 @@
 		35241A52286499FF00FA20C5 /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */; };
 		35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */; };
 		35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A5B2864BC0300FA20C5 /* OtherGroups.swift */; };
-		355FD4A928B2A06A000516B3 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355FD4A828B2A06A000516B3 /* UserRepository.swift */; };
-		355FD4AB28B2A076000516B3 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355FD4AA28B2A076000516B3 /* GroupRepository.swift */; };
-		355FD4AD28B2A08A000516B3 /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355FD4AC28B2A08A000516B3 /* PhotoRepository.swift */; };
 		35653CC72879FBBD000406AE /* FriendGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35653CC52879FBBD000406AE /* FriendGalleryView.swift */; };
 		35653CC82879FBBD000406AE /* FriendGalleryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35653CC62879FBBD000406AE /* FriendGalleryView.xib */; };
 		35653CCA287A0581000406AE /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35653CC9287A0581000406AE /* FullScreenViewController.swift */; };
@@ -35,6 +32,9 @@
 		358C7D18289D541D0078329C /* SessionSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358C7D17289D541D0078329C /* SessionSingleton.swift */; };
 		3597100328735FA500F93F9C /* CollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3597100228735FA500F93F9C /* CollageView.swift */; };
 		35A7BE96286B667700A03FE5 /* ColorGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */; };
+		35C2C4C428F5995100F64BC2 /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C2C4C128F5995100F64BC2 /* PhotoRepository.swift */; };
+		35C2C4C528F5995100F64BC2 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C2C4C228F5995100F64BC2 /* UserRepository.swift */; };
+		35C2C4C628F5995100F64BC2 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C2C4C328F5995100F64BC2 /* GroupRepository.swift */; };
 		35E4F8A42868C5E800A95E07 /* HeartControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4F8A32868C5E800A95E07 /* HeartControl.swift */; };
 		35EA8502285B820A00EAA1BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA8501285B820A00EAA1BB /* AppDelegate.swift */; };
 		35EA8504285B820A00EAA1BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA8503285B820A00EAA1BB /* SceneDelegate.swift */; };
@@ -83,6 +83,9 @@
 		358C7D17289D541D0078329C /* SessionSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSingleton.swift; sourceTree = "<group>"; };
 		3597100228735FA500F93F9C /* CollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageView.swift; sourceTree = "<group>"; };
 		35A7BE95286B667700A03FE5 /* ColorGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGameViewController.swift; sourceTree = "<group>"; };
+		35C2C4C128F5995100F64BC2 /* PhotoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoRepository.swift; path = VKontakte/Repository/PhotoRepository.swift; sourceTree = SOURCE_ROOT; };
+		35C2C4C228F5995100F64BC2 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserRepository.swift; path = VKontakte/Repository/UserRepository.swift; sourceTree = SOURCE_ROOT; };
+		35C2C4C328F5995100F64BC2 /* GroupRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupRepository.swift; path = VKontakte/Repository/GroupRepository.swift; sourceTree = SOURCE_ROOT; };
 		35E4F8A32868C5E800A95E07 /* HeartControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartControl.swift; sourceTree = "<group>"; };
 		35EA84FE285B820A00EAA1BB /* VKontakte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKontakte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35EA8501285B820A00EAA1BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +126,26 @@
 				C59F57D50AA9BC39E729B377 /* Pods-VKontakte.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		35031D2B28F59F2C00446756 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				355FD4A828B2A06A000516B3 /* UserRepository.swift */,
+				355FD4AC28B2A08A000516B3 /* PhotoRepository.swift */,
+				355FD4AA28B2A076000516B3 /* GroupRepository.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		35031D2C28F5A04800446756 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				35C2C4C228F5995100F64BC2 /* UserRepository.swift */,
+				35C2C4C128F5995100F64BC2 /* PhotoRepository.swift */,
+				35C2C4C328F5995100F64BC2 /* GroupRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		35241A3A2863716500FA20C5 /* Controller */ = {
@@ -312,16 +335,6 @@
 			path = Newsfeed;
 			sourceTree = "<group>";
 		};
-		355FD4A728B2A046000516B3 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				355FD4A828B2A06A000516B3 /* UserRepository.swift */,
-				355FD4AC28B2A08A000516B3 /* PhotoRepository.swift */,
-				355FD4AA28B2A076000516B3 /* GroupRepository.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		356F01242871F9130033169A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +388,7 @@
 				35EA84FF285B820A00EAA1BB /* Products */,
 				2F8241C77347D2D42E02D387 /* Pods */,
 				F7C29ACC0E6CD8987BBC8B60 /* Frameworks */,
+				35031D2B28F59F2C00446756 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -389,7 +403,7 @@
 		35EA8500285B820A00EAA1BB /* VKontakte */ = {
 			isa = PBXGroup;
 			children = (
-				355FD4A728B2A046000516B3 /* Data */,
+				35031D2C28F5A04800446756 /* Repository */,
 				356FF41728A2B740007A7BA1 /* Network */,
 				3572360228858A54008EE729 /* UIHelpers */,
 				3535F8602871EF69007DF058 /* Newsfeed */,
@@ -560,11 +574,11 @@
 				35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */,
 				35241A4E2864963300FA20C5 /* FriendCollectionController.swift in Sources */,
 				35EF2C9828A5B78B00AAD848 /* ScalableCell.swift in Sources */,
+				35C2C4C428F5995100F64BC2 /* PhotoRepository.swift in Sources */,
 				35653CCA287A0581000406AE /* FullScreenViewController.swift in Sources */,
 				35EF2C9628A58E3700AAD848 /* Utils.swift in Sources */,
 				35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */,
 				35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */,
-				355FD4A928B2A06A000516B3 /* UserRepository.swift in Sources */,
 				35F3978428858B3800A25405 /* PopPushAnimators.swift in Sources */,
 				356F01232871F90E0033169A /* NewsfeedController.swift in Sources */,
 				35241A4428637C7B00FA20C5 /* MyFriends.swift in Sources */,
@@ -572,19 +586,19 @@
 				35EA8506285B820A00EAA1BB /* ViewController.swift in Sources */,
 				35653CC72879FBBD000406AE /* FriendGalleryView.swift in Sources */,
 				35EF2C9228A5748600AAD848 /* Photo.swift in Sources */,
-				355FD4AD28B2A08A000516B3 /* PhotoRepository.swift in Sources */,
 				35241A3728621A2700FA20C5 /* GroupCell.swift in Sources */,
 				35241A392863613B00FA20C5 /* GroupCollection.swift in Sources */,
 				356F012A28731BDE0033169A /* Post.swift in Sources */,
 				356FF41428A280D6007A7BA1 /* TabViewController.swift in Sources */,
+				35C2C4C528F5995100F64BC2 /* UserRepository.swift in Sources */,
 				35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */,
 				358C7D18289D541D0078329C /* SessionSingleton.swift in Sources */,
+				35C2C4C628F5995100F64BC2 /* GroupRepository.swift in Sources */,
 				35E4F8A42868C5E800A95E07 /* HeartControl.swift in Sources */,
 				35F3978228858AFF00A25405 /* CustomUINavigationController.swift in Sources */,
 				35EA8502285B820A00EAA1BB /* AppDelegate.swift in Sources */,
 				35241A422863795B00FA20C5 /* MyFriendsCell.swift in Sources */,
 				35241A332862121500FA20C5 /* OtherGroupsController.swift in Sources */,
-				355FD4AB28B2A076000516B3 /* GroupRepository.swift in Sources */,
 				35A7BE96286B667700A03FE5 /* ColorGameViewController.swift in Sources */,
 				35EA8504285B820A00EAA1BB /* SceneDelegate.swift in Sources */,
 				3597100328735FA500F93F9C /* CollageView.swift in Sources */,

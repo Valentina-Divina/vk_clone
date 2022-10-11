@@ -6,36 +6,37 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let reuseIdentifier = "FriendCollectionCellID"
 
 class FriendCollectionController: UICollectionViewController {
     
+    let session = SessionSingleton.shared
+    let service = Service.shared
+    let photoRepository = PhotoRepository.shared
+    let realm = try! Realm()
     let columnCount = 2
     let offset: CGFloat = 2.0
-    
     var friend: MyFriends? = nil
     var allPhotos: [URL] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.collectionView!.register(UINib(nibName: "FriendGalleryView", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        
-        Service.shared.getFriendPhoto(complection: { result in
-            self.allPhotos = result.response?.items.map({ item in
-                URL(string: item.sizes.last?.url ?? "")!
-            }) ?? []
-        }, ownerId: self.friend?.id ?? 0)
+        if let ownerId = friend?.id {
+            photoRepository.getPhotoData(ownerId: ownerId) { photoes in
+                self.allPhotos = photoes
+            }
+        }
     }
     
-    
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
@@ -66,10 +67,8 @@ extension FriendCollectionController: UICollectionViewDelegateFlowLayout {
         var size = CGSize()
         let width = collectionView.frame.width / CGFloat(columnCount)
         let height = width
-        print(width)
-        print(height)
         let spacing = CGFloat((columnCount + 1)) * offset / CGFloat(columnCount)
-        print(spacing)
+        
         size.width = width - spacing
         size.height = height - (offset * 2)
         

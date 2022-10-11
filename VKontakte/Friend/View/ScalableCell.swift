@@ -10,8 +10,6 @@ import UIKit
 import ScalingCarousel
 
 class ScalableCell: ScalingCarouselCell {
-    
-    
     override init(frame: CGRect) {
       super.init(frame: frame)
         scaleDivisor = 2

@@ -8,8 +8,7 @@
 import UIKit
 
 class OtherGroupsController: UITableViewController {
-    
-    
+   
     let otherGroups = [
         OtherGroups(name: "Тут подкасты", image: UIImage(named: "grafon")),
         OtherGroups(name: "Шумерля", image: UIImage(named: "shumerlya")),
@@ -18,8 +17,7 @@ class OtherGroupsController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
+  }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
