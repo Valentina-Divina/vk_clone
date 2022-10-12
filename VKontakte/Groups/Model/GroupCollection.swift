@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import RealmSwift
 
-class GroupCollection {
-    let name: String
-    let imageUrl: URL?
-    let id: Int
+class GroupCollection: Object {
+   @Persisted var name: String
+   @Persisted var imageUrl: String?
+   @Persisted var id: Int
     
-    init(name: String, imageUrl: URL? = nil, id: Int) {
+   convenience init(name: String, imageUrl: String? = nil, id: Int) {
+        self.init()
         self.name = name
         self.imageUrl = imageUrl
         self.id = id

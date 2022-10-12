@@ -64,4 +64,3 @@ class UserIdWithPhotos: Object {
         self.userId = userId
     }
 }
-
