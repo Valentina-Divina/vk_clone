@@ -13,16 +13,12 @@ class Service {
     // Отдельный синглтон для методов
     static let shared = Service()
     private init(){}
-    
-    private let userRepository = UserRepository()
-    private let photoRepository = PhotoRepository()
-    private let groupRepository = GroupRepository()
-    
+
     let baseUrl = "https://api.vk.com/method/"
     let token = SessionSingleton.shared.token
     
-    // получаем друзей
-    func getFriends(complection: @escaping (UserResponse)->()) {
+  // MARK: - getFriends
+    func getFriends(completion: @escaping (UserResponse)->()) {
         let url = baseUrl + "/friends.get"
         let parameters: Parameters = [
             "access_token": token,
@@ -32,15 +28,13 @@ class Service {
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             if let data = response.data {
                 let user = try! JSONDecoder().decode(UserResponse.self, from: data) //  раскодировать JSON одной строкой
-                print(user)
-                self.userRepository.saveUserData(user) //realm
-                complection(user)
+                completion(user)
             }
         }
     }
     
-    // получаем группы
-    func getGroups(complection: @escaping (GroupResponse)->()) {
+    // MARK: - getGroups
+    func getGroups(completion: @escaping (GroupResponse)->()) {
         let url = baseUrl + "/groups.get"
         let parameters: Parameters = [
             "access_token": token,
@@ -50,14 +44,14 @@ class Service {
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             if let data = response.data {
                 let groups = try! JSONDecoder().decode(GroupResponse.self, from: data)
-                self.groupRepository.saveGroupData(groups)
-                complection(groups)
+                completion(groups)
             }
         }
     }
     
-    // получаем фото друга
-    func getFriendPhoto(complection: @escaping (PhotosResponse)->(), ownerId: Int) {
+    // MARK: - getFriendPhoto
+    func getFriendPhoto(completion: @escaping (PhotosResponse)->(), ownerId: Int) {
+
         let url = baseUrl + "/photos.get"
         let parameters: Parameters = [
             "access_token": token,
@@ -68,14 +62,15 @@ class Service {
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             if let data = response.data {
+
                 let photos = try! JSONDecoder().decode(PhotosResponse.self, from: data)
-                self.photoRepository.savePhotoData(photos)
-                complection(photos)
+                completion(photos)
+
             }
         }
     }
     
-    // поиск групп по запросу
+    // MARK: - searchGroups
     func getGroupsBySearch(query: String) {
         let url = baseUrl + "/groups.search"
         let parameters: Parameters = [
@@ -86,8 +81,6 @@ class Service {
             "count":"3"]
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print("Groups search")
-            print(response)
         }
     }
 }

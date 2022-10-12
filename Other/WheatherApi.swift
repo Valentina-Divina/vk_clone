@@ -21,8 +21,6 @@ class WeatherApi {
         AF.request(url, method: .get, parameters: param).responseJSON { resp in
             if let data = resp.data {
                 let json = try! JSONDecoder().decode(Wheater.self, from: data)
-                print("Weather")
-                print(json)
             }
         }
     }
