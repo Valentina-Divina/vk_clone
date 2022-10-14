@@ -3,7 +3,7 @@
 //  VKontakte
 //
 //  Created by Valya on 21.08.2022.
-//
+
 
 import Foundation
 import RealmSwift
@@ -14,7 +14,7 @@ class GroupRepository {
     private init(){}
     private let service = Service.shared
     
-    func saveGroupData(_ group: GroupResponse) {
+    func saveGroupData(_ group: [GroupCollection]) {
         do {
             let realm = try Realm()
             realm.beginWrite()
@@ -25,23 +25,45 @@ class GroupRepository {
         }
     }
     
-    func getGroupData(completion: @escaping ([GroupCollection]) -> ()) {
+    func getGroupData() -> Results<GroupCollection>? {
+        var allGroups: Results<GroupCollection>? = nil
         do {
             let realm = try Realm()
-            let allGroups = realm.objects(GroupResponse.self).first
-            if (allGroups == nil) {
+            allGroups = realm.objects(GroupCollection.self)
+            if (allGroups == nil || allGroups!.isEmpty) {
                 service.getGroups { result in
                     let converted = result.response?.items.map({ group in
-                        GroupCollection(name: group.name, imageUrl: URL(string: group.photo200), id: group.id)
+                        GroupCollection(name: group.name, imageUrl: group.photo200, id: group.id)
                     }) ?? []
-                    self.saveGroupData(result)
-                    completion(converted)
+                    self.saveGroupData(converted)
                 }
-            } else {
-                let converted = allGroups?.response?.items.map({ group in
-                    GroupCollection(name: group.name, imageUrl: URL(string: group.photo200), id: group.id)
-                }) ?? []
-                completion(converted)
+            }
+        } catch {
+            print(error)
+        }
+        return allGroups
+    }
+    
+    // Добавление группы в БД
+    func addGroup(_ group: GroupCollection) {
+        do {
+            let realm = try Realm()
+            // Оборачиваем в write{} чтобы начать транзакцию в БД
+            try realm.write {
+                realm.add(group)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    // Удаление группы из БД
+    func removeGroup(_ group: GroupCollection) {
+        do {
+            let realm = try Realm()
+            // Оборачиваем в write{} чтобы начать транзакцию в БД
+            try realm.write {
+                realm.delete(group)
             }
         } catch {
             print(error)

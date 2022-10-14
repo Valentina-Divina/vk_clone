@@ -6,17 +6,17 @@
 //
 
 import UIKit
+import RealmSwift
 
-class MyFriends {
-    let id: Int
-    let name: String
-    let imageUrl: URL?
-    var photoGallery: [UIImage]
+class MyFriends: Object {
+    @Persisted var id: Int
+    @Persisted var name: String
+    @Persisted var imageUrl: String?
     
-    init(name: String, imageUrl: URL? = nil, photoGallery: [UIImage] = [], id: Int) {
+    convenience init(name: String, imageUrl: String? = nil, photoGallery: [UIImage] = [], id: Int) {
+        self.init()
         self.name = name
         self.imageUrl = imageUrl
-        self.photoGallery = photoGallery
         self.id = id
     }
 }

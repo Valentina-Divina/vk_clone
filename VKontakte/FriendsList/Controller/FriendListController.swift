@@ -10,12 +10,12 @@ import RealmSwift
 
 class FriendListController: UITableViewController {
     
-   private let session = SessionSingleton.shared // ссылаемся на синглтон
-   private let service = Service.shared
-   private let userRepository = UserRepository.shared
-   private let realm = try! Realm()
-    
-    var friends = [MyFriends]()  {
+    private let session = SessionSingleton.shared // ссылаемся на синглтон
+    private let service = Service.shared
+    private let userRepository = UserRepository.shared
+    private let realm = try! Realm()
+    private var token: NotificationToken? = nil
+    var friends: Results<MyFriends>? = nil  {  // нотификация
         didSet {
             update()
             tableView.reloadData()
@@ -35,9 +35,8 @@ class FriendListController: UITableViewController {
         definesPresentationContext = true
         
         update()
-        userRepository.getUserData { friends in
-            self.friends = friends
-        }
+        
+        getFriends()
     }
     
     // MARK: - SearchBar
@@ -51,22 +50,42 @@ class FriendListController: UITableViewController {
     private var isFiltering: Bool {
         return searchController.isActive && !searchBarIsEmpty
     }
-    // Update
+    // update
     private func update() {
-        for friend in friends {
-            let friendKey = String(friend.name.prefix(1))
-            if var friendValues = dictionarySectionToFriends[friendKey] {
-                friendValues.append(friend)
-                dictionarySectionToFriends[friendKey] = friendValues
-            } else {
-                dictionarySectionToFriends[friendKey] = [friend]
+        if let unwrappedFriends = friends {
+            for friend in unwrappedFriends {
+                let friendKey = String(friend.name.prefix(1))
+                if var friendValues = dictionarySectionToFriends[friendKey] {
+                    friendValues.append(friend)
+                    dictionarySectionToFriends[friendKey] = friendValues
+                } else {
+                    dictionarySectionToFriends[friendKey] = [friend]
+                }
+            }
+            friendTitles = [String](dictionarySectionToFriends.keys)
+            friendTitles = friendTitles.sorted()
+        }
+    }
+    // MARK: - notification
+    private func getFriends() {
+        // нотификация
+        friends = userRepository.getUserData()
+        token = friends!.observe{ (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial(_):
+                self.tableView.reloadData()
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications:  let modifications):
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic )
+                self.tableView.endUpdates()
+            case .error(let err):
+                print(err.localizedDescription)
             }
         }
-        friendTitles = [String](dictionarySectionToFriends.keys)
-        friendTitles = friendTitles.sorted()
     }
     
-    // MARK: - Table
     override func numberOfSections(in tableView: UITableView) -> Int {
         if(isFiltering) {
             return 1
@@ -102,7 +121,7 @@ class FriendListController: UITableViewController {
         
         cell.myFriendsLable.text = friendy?.name
         cell.customImageView.layer.cornerRadius = 40
-        cell.customImageView.load(url: friendy?.imageUrl)
+        cell.customImageView.load(url: URL(string: friendy?.imageUrl ?? ""))
         
         return cell
     }
@@ -111,9 +130,7 @@ class FriendListController: UITableViewController {
         if segue.identifier == "showFriend",
            let destinationVC = segue.destination as? FriendCollectionController,
            let indexPath = tableView.indexPathForSelectedRow {
-            
             let friendKey = friendTitles[indexPath.section]
-            
             var friend: MyFriends? = nil
             if isFiltering {
                 friend = filteredFriends[indexPath.row]
@@ -144,11 +161,10 @@ extension FriendListController: UISearchResultsUpdating {
     }
     
     private func filterForSearchText(_ searchText: String) { // заполняем массив отфильтрованными данными
-        filteredFriends = friends.filter({ (group: MyFriends ) -> Bool in
+        filteredFriends = friends?.filter({ (group: MyFriends ) -> Bool in
             return group.name.lowercased().contains(searchText.lowercased())
-        })
+        }) ?? []
         tableView.reloadData()
     }
 }
-
 

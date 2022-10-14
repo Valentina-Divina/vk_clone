@@ -14,13 +14,8 @@ class GroupListController: UITableViewController {
     let service = Service.shared
     let groupRepository = GroupRepository.shared
     let realm = try! Realm()
-    
-    var groups = [GroupCollection]()  {
-        didSet {
-            update()
-            tableView.reloadData()
-        }
-    }
+    private var token: NotificationToken? = nil
+    var groups: Results<GroupCollection>? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +25,12 @@ class GroupListController: UITableViewController {
         searchController.searchBar.placeholder = "Поиск"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
-        update()
-        groupRepository.getGroupData(completion: {groupes in
-            self.groups = groupes
-        })
+        getGroups()
     }
     
     // MARK: -  SearchBar
     private var filteredGroups = [GroupCollection]()
     private let searchController = UISearchController(searchResultsController: nil) // экземпляр класса SearchController
-    var dictionarySectionToGroup = [String: [GroupCollection]]()
-    var groupTitles = [String]()
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
@@ -50,20 +39,31 @@ class GroupListController: UITableViewController {
         return searchController.isActive && !searchBarIsEmpty
     }
     
-    private func update() {
-        for group in groups {
-            let groupKey = String(group.name.prefix(1))
-            if var groupValues = dictionarySectionToGroup[groupKey] {
-                groupValues.append(group)
-                dictionarySectionToGroup[groupKey] = groupValues
-            } else {
-                dictionarySectionToGroup[groupKey] = [group]
+    // MARK: - notification
+    private func getGroups() {
+        // нотификация
+        groups = groupRepository.getGroupData()
+        token = groups!.observe{ (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial(_):
+                print("========")
+                print(11111)
+                self.tableView.reloadData()
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications:  let modifications):
+                print("========")
+                print(22222)
+                
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic )
+                self.tableView.endUpdates()
+            case .error(let err):
+                print(err.localizedDescription)
             }
         }
-        groupTitles = [String](dictionarySectionToGroup.keys)
-        groupTitles = groupTitles.sorted()
-    }    
-
+    }
+    
     // MARK: - Table
     
     override func numberOfSections(in tableView: UITableView) -> Int { // количество секций
@@ -73,26 +73,25 @@ class GroupListController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { // количество строк в секции
         if isFiltering {
             return filteredGroups.count
+        } else {
+            return groups?.count ?? 0
         }
-        return groups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // создание ячейки
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCellID", // ячейку можно переиспользовать
-                                                       for: indexPath) as? GroupCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCellID", for: indexPath) as? GroupCell else {
             preconditionFailure("Error")
         }
-        
-        var group: GroupCollection
+        var group: GroupCollection?
         if isFiltering {
             group = filteredGroups[indexPath.row]
         } else {
-            group = groups[indexPath.row]
+            group = groups?[indexPath.row]
         }
         
-        cell.lableGroupCell.text = group.name
+        cell.lableGroupCell.text = group?.name
         cell.imageGroupCell.layer.cornerRadius = 40
-        cell.imageGroupCell.load(url: group.imageUrl)
+        cell.imageGroupCell.load(url: URL(string: group?.imageUrl ?? ""))
         
         return cell
     }
@@ -103,18 +102,20 @@ class GroupListController: UITableViewController {
            let indexPath = selected.tableView.indexPathForSelectedRow {
             
             let newGroup = selected.otherGroups[indexPath.row]
-            if !groups.contains(where: {$0.name == newGroup.name}) {
-                groups.append(GroupCollection(name: newGroup.name, imageUrl: nil, id: 1))
+            if !(groups?.contains(where: {$0.name == newGroup.name}) ?? false) {
+                groupRepository.addGroup(GroupCollection(name: newGroup.name, imageUrl: nil, id: 1))
             }
-            tableView.reloadData()
         }
     }
     
     // удаляем
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == GroupCell.EditingStyle.delete {
-            groups.remove (at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic) } }
+            if let groupToDelete = groups?[indexPath.row] {
+                groupRepository.removeGroup(groupToDelete)
+            }
+        }
+    }
 }
 
 extension GroupListController: UISearchResultsUpdating {
@@ -123,9 +124,9 @@ extension GroupListController: UISearchResultsUpdating {
     }
     
     private func filterForSearchText(_ searchText: String) { // заполняем массив отфильтрованными данными
-        filteredGroups = groups.filter({ (group: GroupCollection ) -> Bool in
+        filteredGroups = groups?.filter({ (group: GroupCollection ) -> Bool in
             return group.name.lowercased().contains(searchText.lowercased())
-        })
+        }) ?? []
         tableView.reloadData()
     }
 }

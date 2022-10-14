@@ -65,7 +65,6 @@ class Service {
 
                 let photos = try! JSONDecoder().decode(PhotosResponse.self, from: data)
                 completion(photos)
-
             }
         }
     }
