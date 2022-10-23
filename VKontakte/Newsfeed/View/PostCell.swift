@@ -6,29 +6,90 @@
 //
 
 import UIKit
+import SnapKit
 
 class PostCell: UITableViewCell {
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var postTextLabel: UILabel!
-    @IBOutlet weak var timeAgoLabel: UILabel!
-    @IBOutlet weak var postStatusLabel: UILabel!
-    @IBOutlet weak var collageView: CollageView!
+    //    @IBOutlet weak var usernameLabel: UILabel!
+    //    @IBOutlet weak var userImage: UIImageView!
+    //    @IBOutlet weak var postTextLabel: UILabel!
+    //    @IBOutlet weak var timeAgoLabel: UILabel!
+    //    @IBOutlet weak var postStatusLabel: UILabel!
     
     var post: Post! {
         didSet {
             updateUI()
         }
     }
+    func updateUI() {
+    }
+}
+
+class HeaderCell: UITableViewCell {
+    
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var timeAgoLabel: UILabel!
+    
+    var header: Header? {
+        didSet {
+            updateUI()
+        }
+    }
+    func updateUI() {
+        if let unwrappedHeader = header {
+            userImage.image = unwrappedHeader.createdBy.profileImage
+            userImage.layer.cornerRadius = userImage.frame.width/2
+            usernameLabel.text = unwrappedHeader.createdBy.username
+            timeAgoLabel.text = unwrappedHeader.timeAgo
+        }
+    }
+}
+
+class CaptionCell: UITableViewCell {
+    @IBOutlet weak var postTextLabel: UILabel!
+    
+    var caption: Caption? {
+        didSet {
+            updateUI()
+        }
+    }
+    func updateUI() {
+        if let unwrappedCaption = caption {
+            postTextLabel.text = unwrappedCaption.caption
+        }
+    }
+}
+
+class ImagesCell: UITableViewCell {
+    
+    @IBOutlet weak var collage: CollageView!
+    
+    var images: Images? {
+        didSet {
+            updateUI()
+        }
+    }
     
     func updateUI() {
-        userImage.image = post.createdBy.profileImage
-        userImage.layer.cornerRadius = userImage.frame.width/2
-        usernameLabel.text = post.createdBy.username
-        postTextLabel.text = post.caption
-        collageView.images = post.image
-        timeAgoLabel.text = post.timeAgo
-        postStatusLabel.text = " \(post.numberOfViews ?? 0)"
-        
+        if let unwrappedImages = images {
+            collage.images = unwrappedImages.image
+        }
+    }
+}
+
+class FooterCell: UITableViewCell {
+
+    @IBOutlet weak var heart: HeartControl!
+    @IBOutlet weak var countViews: UILabel!
+    var footer: Footer? {
+        didSet {
+            updateUI()
+        }
+    }
+
+    func updateUI() {
+        if let unwrappedFooter = footer {
+            countViews.text = unwrappedFooter.numberOfViews
+        }
     }
 }

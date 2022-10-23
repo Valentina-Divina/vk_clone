@@ -6,86 +6,72 @@
 //
 
 import UIKit
+import SnapKit
 
 class NewsfeedController: UITableViewController {
     
     var posts: [Post]?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchPosts()
-    }
+        
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        tableView.register(UINib(nibName: String(describing: HeaderCell.self), bundle: nil), forCellReuseIdentifier: "HeaderCellID")
+        tableView.register(UINib(nibName: String(describing: CaptionCell.self), bundle: nil), forCellReuseIdentifier: "CaptionllID")
+        tableView.register(UINib(nibName: String(describing: ImagesCell.self), bundle: nil), forCellReuseIdentifier: "ImagesCellID")
+        tableView.register(UINib(nibName: String(describing: FooterCell.self), bundle: nil), forCellReuseIdentifier: "FooterCellID")
 
+    }
+    
     func fetchPosts() {
         posts = Post.fetchPosts()
         tableView.reloadData()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let posts = posts {
             return posts.count
         }
         return 0
     }
-
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let posts = posts {
+            return posts[section].views.count
+        }
+        return 0
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCellID", for: indexPath) as! PostCell
-        cell.post = posts![indexPath.row]
-
-        return cell
+       
+        var cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCellID", for: indexPath) as! HeaderCell
+        
+        switch(posts?[indexPath.section].views[indexPath.row].self) {
+        case (let cellData as Header):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCellID", for: indexPath) as! HeaderCell
+            cell.header = cellData
+           // print("хуй \(cellData)")
+            return cell
+        case (let cellData as Caption):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CaptionllID", for: indexPath) as! CaptionCell
+            cell.caption = cellData
+            return cell
+            
+        case (let cellData as Images):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ImagesCellID", for: indexPath) as! ImagesCell
+            cell.images = cellData
+            return cell
+        case (let cellData as Footer):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FooterCellID", for: indexPath) as! FooterCell
+            cell.footer = cellData
+            return cell
+        default:
+            return cell
+        }
     }
-   
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 

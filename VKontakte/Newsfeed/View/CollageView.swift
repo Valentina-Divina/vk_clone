@@ -9,13 +9,22 @@ import Foundation
 import UIKit
 
 @IBDesignable class CollageView: UIView {
-    var images: [UIImage?] = []
+    var images: [UIImage?] = [] {
+        didSet {
+            setupView()
+        }
+    }
     
     private var containerView: UICollectionView!
     
     private var itemHeight: CGFloat = 0
     private var itemWidth: CGFloat = 0
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setupView()
+    }
     
     override init(frame aFrame: CGRect) {
         super.init(frame: aFrame)
@@ -28,6 +37,7 @@ import UIKit
     }
     
     func setupView() {
+        containerView?.removeFromSuperview()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         containerView = UICollectionView(frame: self.frame, collectionViewLayout: layout)

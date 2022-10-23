@@ -307,14 +307,6 @@
                                     <constraint firstAttribute="bottom" secondItem="re8-1X-POc" secondAttribute="bottom" id="aTB-yL-wvI"/>
                                     <constraint firstItem="re8-1X-POc" firstAttribute="leading" secondItem="8Hw-Zg-TDR" secondAttribute="leading" id="onP-eH-6G4"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="collageView" destination="biN-yg-PrV" id="OA0-vu-hih"/>
-                                    <outlet property="postStatusLabel" destination="ckj-hI-tj0" id="VmV-4d-6RE"/>
-                                    <outlet property="postTextLabel" destination="Chz-qT-9Nf" id="x6p-dJ-d4D"/>
-                                    <outlet property="timeAgoLabel" destination="EIM-uh-cb8" id="VYl-zV-8t0"/>
-                                    <outlet property="userImage" destination="a1g-C9-SOA" id="eTv-qF-294"/>
-                                    <outlet property="usernameLabel" destination="0Uz-Di-Ksl" id="6TR-1f-uT8"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
