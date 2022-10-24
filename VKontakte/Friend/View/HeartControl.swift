@@ -32,11 +32,10 @@ import UIKit
         self.setupGestures()
     }
     
-    
     private func setupView() {
         backgroundColor = .clear
         stackView = UIStackView() // создаем стек вью
-        imageView = UIImageView() //создаем картинку и лебле
+        imageView = UIImageView() //создаем картинку и лейбле
         lableControl = UILabel()
         lableControl.textColor = .black
         imageView.contentMode = .scaleToFill
