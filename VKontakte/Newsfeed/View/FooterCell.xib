@@ -24,7 +24,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g7-vy-hJ9">
-                        <rect key="frame" x="84" y="18.5" width="48.5" height="31"/>
+                        <rect key="frame" x="84" y="18.5" width="52.5" height="31"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="bubble.left" catalog="system" title=""/>
                     </button>

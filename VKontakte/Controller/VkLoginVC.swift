@@ -32,8 +32,10 @@ class VkLoginVC: UIViewController {
         
         urlComponent.queryItems = [URLQueryItem(name: "client_id", value: appId),
                                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html "),
+                                   URLQueryItem(name: "scope", value: "336918"),
                                    URLQueryItem(name: "display", value: "mobile"),
-                                   URLQueryItem(name: "response_type", value: "token")]
+                                   URLQueryItem(name: "response_type", value: "token"),
+                                   URLQueryItem(name: "v", value: "5.131")]
         
         let url = urlComponent.url
         if UIApplication.shared.canOpenURL(url!) {
@@ -62,7 +64,7 @@ extension VkLoginVC: WKNavigationDelegate {
             }
         if let token = params["access_token"]{
             self.session.token = token // токен добавлен в синглтон
-//            print("TOKEN TAG", token)
+                     print("TOKEN TAG", token)
             secondVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabView") as? TabViewController
             self.view.insertSubview((secondVC?.view)!, at: 9) // добавить потом проверку
         }
