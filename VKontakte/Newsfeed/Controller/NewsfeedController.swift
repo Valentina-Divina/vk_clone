@@ -12,6 +12,8 @@ class NewsfeedController: UITableViewController {
     
     var posts: [Post]?
     
+    let service: NewsfeedService = NewsfeedService.shared
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,10 @@ class NewsfeedController: UITableViewController {
         tableView.register(UINib(nibName: String(describing: CaptionCell.self), bundle: nil), forCellReuseIdentifier: "CaptionllID")
         tableView.register(UINib(nibName: String(describing: ImagesCell.self), bundle: nil), forCellReuseIdentifier: "ImagesCellID")
         tableView.register(UINib(nibName: String(describing: FooterCell.self), bundle: nil), forCellReuseIdentifier: "FooterCellID")
-
+        
+        service.getNewsFeed { newsFeed in
+            print(newsFeed)
+        }
     }
     
     func fetchPosts() {
@@ -45,7 +50,6 @@ class NewsfeedController: UITableViewController {
         return 0
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         var cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCellID", for: indexPath) as! HeaderCell
@@ -54,7 +58,6 @@ class NewsfeedController: UITableViewController {
         case (let cellData as Header):
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCellID", for: indexPath) as! HeaderCell
             cell.header = cellData
-           // print("хуй \(cellData)")
             return cell
         case (let cellData as Caption):
             let cell = tableView.dequeueReusableCell(withIdentifier: "CaptionllID", for: indexPath) as! CaptionCell

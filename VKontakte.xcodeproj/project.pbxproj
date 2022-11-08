@@ -19,6 +19,9 @@
 		35241A52286499FF00FA20C5 /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */; };
 		35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */; };
 		35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A5B2864BC0300FA20C5 /* OtherGroups.swift */; };
+		353DEF8B2913EB0500DF43AE /* NewsfeedRepository .swift in Sources */ = {isa = PBXBuildFile; fileRef = 353DEF8A2913EB0500DF43AE /* NewsfeedRepository .swift */; };
+		353DEF8D2913EB3100DF43AE /* Newsfeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353DEF8C2913EB3100DF43AE /* Newsfeed.swift */; };
+		353DEF8F2913EB4F00DF43AE /* NewsfeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353DEF8E2913EB4F00DF43AE /* NewsfeedService.swift */; };
 		35556C29290057AC0055DF3A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35556C27290057AC0055DF3A /* TableViewCell.swift */; };
 		35556C2A290057AC0055DF3A /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35556C28290057AC0055DF3A /* TableViewCell.xib */; };
 		35556C2C2900582F0055DF3A /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35556C2B2900582F0055DF3A /* HeaderCell.xib */; };
@@ -73,6 +76,9 @@
 		35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
 		35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsCell.swift; sourceTree = "<group>"; };
 		35241A5B2864BC0300FA20C5 /* OtherGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroups.swift; sourceTree = "<group>"; };
+		353DEF8A2913EB0500DF43AE /* NewsfeedRepository .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsfeedRepository .swift"; sourceTree = "<group>"; };
+		353DEF8C2913EB3100DF43AE /* Newsfeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newsfeed.swift; sourceTree = "<group>"; };
+		353DEF8E2913EB4F00DF43AE /* NewsfeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedService.swift; sourceTree = "<group>"; };
 		35556C27290057AC0055DF3A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		35556C28290057AC0055DF3A /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		35556C2B2900582F0055DF3A /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 				35C2C4C228F5995100F64BC2 /* UserRepository.swift */,
 				35C2C4C128F5995100F64BC2 /* PhotoRepository.swift */,
 				35C2C4C328F5995100F64BC2 /* GroupRepository.swift */,
+				353DEF8A2913EB0500DF43AE /* NewsfeedRepository .swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -382,6 +389,7 @@
 				35EF2C9028A5746F00AAD848 /* Model */,
 				358C7D17289D541D0078329C /* SessionSingleton.swift */,
 				356FF41528A28BB7007A7BA1 /* Service.swift */,
+				353DEF8E2913EB4F00DF43AE /* NewsfeedService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -446,6 +454,7 @@
 				356FF41828A547FE007A7BA1 /* User.swift */,
 				35EF2C9128A5748600AAD848 /* Photo.swift */,
 				35EF2C9328A574A800AAD848 /* Group.swift */,
+				353DEF8C2913EB3100DF43AE /* Newsfeed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -593,6 +602,7 @@
 				35241A3128620FD300FA20C5 /* GroupListController.swift in Sources */,
 				356FF41028A1594D007A7BA1 /* VkLoginVC.swift in Sources */,
 				356FF41928A547FE007A7BA1 /* User.swift in Sources */,
+				353DEF8B2913EB0500DF43AE /* NewsfeedRepository .swift in Sources */,
 				35F761E828ACEE2D000A8412 /* WheatherApi.swift in Sources */,
 				35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */,
 				35241A4E2864963300FA20C5 /* FriendCollectionController.swift in Sources */,
@@ -600,6 +610,8 @@
 				35C2C4C428F5995100F64BC2 /* PhotoRepository.swift in Sources */,
 				35653CCA287A0581000406AE /* FullScreenViewController.swift in Sources */,
 				35EF2C9628A58E3700AAD848 /* Utils.swift in Sources */,
+				353DEF8F2913EB4F00DF43AE /* NewsfeedService.swift in Sources */,
+				353DEF8D2913EB3100DF43AE /* Newsfeed.swift in Sources */,
 				35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */,
 				35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */,
 				35F3978428858B3800A25405 /* PopPushAnimators.swift in Sources */,
