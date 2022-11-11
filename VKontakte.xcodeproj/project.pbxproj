@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35038E9F2868791B0038C244 /* CustomViewFriendsList.swift */; };
+		3514EE67291A7C5000A0B39E /* GetGroupsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3514EE66291A7C5000A0B39E /* GetGroupsOperation.swift */; };
 		35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A2E28620D7E00FA20C5 /* FriendListController.swift */; };
 		35241A3128620FD300FA20C5 /* GroupListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A3028620FD300FA20C5 /* GroupListController.swift */; };
 		35241A332862121500FA20C5 /* OtherGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A322862121500FA20C5 /* OtherGroupsController.swift */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		1B9C34808385667F8A83D8B6 /* Pods_VKontakte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKontakte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35038E9F2868791B0038C244 /* CustomViewFriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewFriendsList.swift; sourceTree = "<group>"; };
+		3514EE66291A7C5000A0B39E /* GetGroupsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsOperation.swift; sourceTree = "<group>"; };
 		35241A2E28620D7E00FA20C5 /* FriendListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListController.swift; sourceTree = "<group>"; };
 		35241A3028620FD300FA20C5 /* GroupListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListController.swift; sourceTree = "<group>"; };
 		35241A322862121500FA20C5 /* OtherGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,14 @@
 				353DEF8A2913EB0500DF43AE /* NewsfeedRepository .swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		3514EE65291A7C3B00A0B39E /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				3514EE66291A7C5000A0B39E /* GetGroupsOperation.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		35241A3A2863716500FA20C5 /* Controller */ = {
@@ -386,6 +396,7 @@
 		356FF41728A2B740007A7BA1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				3514EE65291A7C3B00A0B39E /* Operations */,
 				35EF2C9028A5746F00AAD848 /* Model */,
 				358C7D17289D541D0078329C /* SessionSingleton.swift */,
 				356FF41528A28BB7007A7BA1 /* Service.swift */,
@@ -612,6 +623,7 @@
 				35EF2C9628A58E3700AAD848 /* Utils.swift in Sources */,
 				353DEF8F2913EB4F00DF43AE /* NewsfeedService.swift in Sources */,
 				353DEF8D2913EB3100DF43AE /* Newsfeed.swift in Sources */,
+				3514EE67291A7C5000A0B39E /* GetGroupsOperation.swift in Sources */,
 				35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */,
 				35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */,
 				35F3978428858B3800A25405 /* PopPushAnimators.swift in Sources */,

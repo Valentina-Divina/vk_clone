@@ -14,6 +14,8 @@ class GroupRepository {
     private init(){}
     private let service = Service.shared
     
+    let myOwnQueue = OperationQueue()
+    
     func saveGroupData(_ group: [GroupCollection]) {
         do {
             let realm = try Realm()
@@ -31,6 +33,27 @@ class GroupRepository {
             let realm = try Realm()
             allGroups = realm.objects(GroupCollection.self)
             if (allGroups == nil || allGroups!.isEmpty) {
+                
+                let getGroupsOperation = GetGroupsOperation(service: service)
+                
+                getGroupsOperation.completionBlock = {
+                    
+                    if let result = getGroupsOperation.result {
+                        let convertOperation = ConvertGroupsOperation(dataToConvert: result)
+                        
+                        convertOperation.completionBlock = {
+                            
+                            if let converted = convertOperation.convertedResult {
+                                self.saveGroupData(converted)
+                            }
+                        }
+                        
+                        self.myOwnQueue.addOperation(convertOperation)
+                    }
+                }
+                
+                myOwnQueue.addOperation(getGroupsOperation)
+                
                 service.getGroups { result in
                     let converted = result.response?.items.map({ group in
                         GroupCollection(name: group.name, imageUrl: group.photo200, id: group.id)
