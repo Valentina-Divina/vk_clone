@@ -21,20 +21,19 @@ class NewsfeedService {
             "v":"5.131"
         ]
         
-        DispatchQueue.global(qos: .background).async {
+        AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             
-            AF.request(url, method: .get, parameters: parameters).responseJSON { response in
-                
-                DispatchQueue.global(qos: .background).async {
-                    if let data = response.data {
-                        let newsFeed = try! JSONDecoder().decode(NewsFeed.self, from: data)
-                        
-                        DispatchQueue.main.async {
-                            completion(newsFeed)
-                        }
+            DispatchQueue.global(qos: .background).async {
+                if let data = response.data {
+                    let newsFeed = try! JSONDecoder().decode(NewsFeed.self, from: data) //  раскодировать JSON одной строкой
+                    
+                    DispatchQueue.main.async {
+                        completion(newsFeed)
                     }
                 }
             }
+           
         }
     }
+    
 }
