@@ -23,7 +23,7 @@ class NewsfeedService {
         
         DispatchQueue.global(qos: .background).async {
             
-            AF.request(url, method: .get, parameters: parameters).responseJSON { response in
+            Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
                 
                 if let data = response.data {
                     let newsFeed = try! JSONDecoder().decode(NewsFeed.self, from: data)
@@ -33,8 +33,6 @@ class NewsfeedService {
                     }
                 }
             }
-            
         }
     }
-    
 }

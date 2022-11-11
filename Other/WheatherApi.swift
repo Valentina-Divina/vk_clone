@@ -18,7 +18,7 @@ class WeatherApi {
             "appid":"6510fbc2a5795dbe5e008c49d129fa02"
         ]
         
-        AF.request(url, method: .get, parameters: param).responseJSON { resp in
+        Alamofire.request(url, method: .get, parameters: param).responseJSON { resp in
             if let data = resp.data {
                 let json = try! JSONDecoder().decode(Wheater.self, from: data)
             }
