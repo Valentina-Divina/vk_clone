@@ -8,7 +8,8 @@ target 'VKontakte' do
       pod 'ScalingCarousel'
       pod 'RealmSwift'
       pod 'SnapKit'
-
+      pod "PromiseKit"
+      pod 'PromiseKit/Alamofire'
   # Pods for VKontakte
 
 end

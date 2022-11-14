@@ -6,57 +6,54 @@
 //
 
 import RealmSwift
+import PromiseKit
+import Darwin
 
 class UserRepository {
     
-    // Отдельный синглтон для методов
     static let shared = UserRepository()
     private init(){}
     private let service = Service.shared
     
-    // cохранение данных друга в Realm
     func saveUserData(_ users: [MyFriends]) {
-        
-        // обработка исключений при работе с хранилищем
         do {
-            // получаем доступ к хранилищу
             let realm = try Realm()
-            
-            // начинаем изменять хранилище
             realm.beginWrite()
-            // кладем все обьекты в хранилище
             realm.add(users)
-            // завершаем изменения хранилища
             try realm.commitWrite()
         } catch {
-            // если произошла ошибка, выводим ее в консоль
             print(error)
         }
     }
-
-    func getUserData() -> Results<MyFriends>? {
-        var allFriends: Results<MyFriends>? = nil
-        do {
-            let realm = try Realm()
-            // Вытаскиваем друзей из БД
-            allFriends = realm.objects(MyFriends.self)
-            // Если друзей в БД нет
-            if (allFriends == nil || allFriends!.isEmpty) {
-                // Идем за друзьями на сервер
-                service.getFriends { result in
-                    // Конвертируем UserResponse в [MyFriends]
-                    let converted = result.response?.items.map({ user in
-                        MyFriends(name: user.firstName + " " + user.lastName , imageUrl: user.photo, id: user.id)
-                    }) ?? []
-                    // Сохраняем полученный UserResponse в БД
-                    self.saveUserData(converted)
-                    // Выкидываем сконвертированный [MyFriends] в контроллер
+    
+    func getUserData() -> Promise<Results<MyFriends>?> {
+        return Promise { resolver in
+            var allFriends: Results<MyFriends>? = nil
+            do {
+                let realm = try Realm()
+                allFriends = realm.objects(MyFriends.self)
+                if (allFriends == nil || allFriends!.isEmpty) {
+                    
+                    service.getFriends()
+                        .map(on: .global()) { result in
+                            let converted = result.response?.items.map({ user in
+                                MyFriends(name: user.firstName + " " + user.lastName , imageUrl: user.photo, id: user.id)
+                            }) ?? []
+                            
+                            self.saveUserData(converted)
+                            resolver.fulfill(allFriends)
+                        }.catch { error in
+                            print(error)
+                            resolver.fulfill(nil)
+                        }
+                    
+                } else {
+                    resolver.fulfill(allFriends)
                 }
+            } catch {
+                print(error)
+                resolver.fulfill(nil)
             }
-        } catch {
-            // если произошла ошибка, выводим ее в консоль
-            print(error)
         }
-        return allFriends
     }
 }

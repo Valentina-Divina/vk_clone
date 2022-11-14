@@ -68,9 +68,17 @@ class FriendListController: UITableViewController {
     }
     // MARK: - notification
     private func getFriends() {
-        // нотификация
-        friends = userRepository.getUserData()
-        token = friends!.observe{ (changes: RealmCollectionChange) in
+        userRepository.getUserData().done(on: .main) { result in
+            self.friends = result
+            
+            if let unwrappedResult = result {
+                self.observeFriends(friends: unwrappedResult)
+            }
+        }
+    }
+    
+    private func observeFriends(friends: Results<MyFriends>) {
+        token = friends.observe { (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
                 self.tableView.reloadData()

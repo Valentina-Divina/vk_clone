@@ -8,10 +8,9 @@
 import Foundation
 import Alamofire
 
-class GetGroupsOperation : Operation {
+class GetGroupsOperation: Operation {
     
     var service: Service
-    
     var result: GroupResponse?
     
     override func main() {
@@ -21,7 +20,7 @@ class GetGroupsOperation : Operation {
             "v":"5.131",
             "extended":"1"]
         
-        AF.request(url, method: .get, parameters: parameters).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if let data = response.data {
                 let groups = try! JSONDecoder().decode(GroupResponse.self, from: data)
                 self.result = groups
@@ -35,7 +34,6 @@ class GetGroupsOperation : Operation {
     }
     
 }
-
 
 class ConvertGroupsOperation: Operation {
     
