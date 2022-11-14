@@ -10,16 +10,17 @@ import RealmSwift
 
 class GroupListController: UITableViewController {
     
-    let session = SessionSingleton.shared // ссылаемся на синглтон
-    let service = Service.shared
-    let groupRepository = GroupRepository.shared
-    let realm = try! Realm()
+    private let session = SessionSingleton.shared // ссылаемся на синглтон
+    private let service = Service.shared
+    private let groupRepository = GroupRepository.shared
+    private var cacheHandler: ImageCaсheHandler? = nil
+    private let realm = try! Realm()
     private var token: NotificationToken? = nil
     var groups: Results<GroupCollection>? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        cacheHandler = ImageCaсheHandler(container: tableView)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
@@ -46,12 +47,8 @@ class GroupListController: UITableViewController {
         token = groups!.observe{ (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
-                print("========")
-                print(11111)
                 self.tableView.reloadData()
             case .update(_, deletions: let deletions, insertions: let insertions, modifications:  let modifications):
-                print("========")
-                print(22222)
                 
                 self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
@@ -91,8 +88,12 @@ class GroupListController: UITableViewController {
         
         cell.lableGroupCell.text = group?.name
         cell.imageGroupCell.layer.cornerRadius = 40
-        cell.imageGroupCell.load(url: URL(string: group?.imageUrl ?? ""))
         
+        // берем фотки из кеша
+        if let url = group?.imageUrl {
+            cell.imageGroupCell.image = cacheHandler?.photo(atIndexpath: indexPath, byUrl: url)
+        }
+            
         return cell
     }
     

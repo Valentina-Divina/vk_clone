@@ -13,6 +13,7 @@ class FriendListController: UITableViewController {
     private let session = SessionSingleton.shared // ссылаемся на синглтон
     private let service = Service.shared
     private let userRepository = UserRepository.shared
+    private var cacheHandler: ImageCaсheHandler? = nil
     private let realm = try! Realm()
     private var token: NotificationToken? = nil
     var friends: Results<MyFriends>? = nil  {  // нотификация
@@ -27,7 +28,7 @@ class FriendListController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        cacheHandler = ImageCaсheHandler(container: tableView)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
@@ -35,7 +36,6 @@ class FriendListController: UITableViewController {
         definesPresentationContext = true
         
         update()
-        
         getFriends()
     }
     
@@ -129,7 +129,10 @@ class FriendListController: UITableViewController {
         
         cell.myFriendsLable.text = friendy?.name
         cell.customImageView.layer.cornerRadius = 40
-        cell.customImageView.load(url: URL(string: friendy?.imageUrl ?? ""))
+        
+        if let url = friendy?.imageUrl {
+            cell.customImageView.image = cacheHandler?.photo(atIndexpath: indexPath, byUrl: url)
+        }
         
         return cell
     }

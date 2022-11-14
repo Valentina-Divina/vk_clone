@@ -24,19 +24,15 @@ class FullScreenViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create our carousel
         scalingCarousel = ScalingCarouselView(withFrame: view.frame, andInset: 20)
         scalingCarousel.dataSource = self
         scalingCarousel.delegate = self
         scalingCarousel.translatesAutoresizingMaskIntoConstraints = false
         
-        // Register our custom cell for dequeueing
         scalingCarousel.register(ScalableCell.self, forCellWithReuseIdentifier: "cell")
         
-        // Add our carousel as a subview
         view.addSubview(scalingCarousel)
         
-        // Add Constraints
         scalingCarousel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         scalingCarousel.heightAnchor.constraint(equalToConstant: 300).isActive = true
         scalingCarousel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true

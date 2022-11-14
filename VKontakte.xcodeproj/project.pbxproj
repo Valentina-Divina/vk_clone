@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35038E9F2868791B0038C244 /* CustomViewFriendsList.swift */; };
 		3514EE67291A7C5000A0B39E /* GetGroupsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3514EE66291A7C5000A0B39E /* GetGroupsOperation.swift */; };
+		3514EE6A29226A5700A0B39E /* ImageCaсheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3514EE6929226A5700A0B39E /* ImageCaсheHandler.swift */; };
 		35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A2E28620D7E00FA20C5 /* FriendListController.swift */; };
 		35241A3128620FD300FA20C5 /* GroupListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A3028620FD300FA20C5 /* GroupListController.swift */; };
 		35241A332862121500FA20C5 /* OtherGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A322862121500FA20C5 /* OtherGroupsController.swift */; };
@@ -67,6 +68,7 @@
 		1B9C34808385667F8A83D8B6 /* Pods_VKontakte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKontakte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35038E9F2868791B0038C244 /* CustomViewFriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewFriendsList.swift; sourceTree = "<group>"; };
 		3514EE66291A7C5000A0B39E /* GetGroupsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsOperation.swift; sourceTree = "<group>"; };
+		3514EE6929226A5700A0B39E /* ImageCaсheHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageCaсheHandler.swift"; sourceTree = "<group>"; };
 		35241A2E28620D7E00FA20C5 /* FriendListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListController.swift; sourceTree = "<group>"; };
 		35241A3028620FD300FA20C5 /* GroupListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListController.swift; sourceTree = "<group>"; };
 		35241A322862121500FA20C5 /* OtherGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,14 @@
 				3514EE66291A7C5000A0B39E /* GetGroupsOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		3514EE6829226A3900A0B39E /* ImageCaсheHandler */ = {
+			isa = PBXGroup;
+			children = (
+				3514EE6929226A5700A0B39E /* ImageCaсheHandler.swift */,
+			);
+			path = "ImageCaсheHandler";
 			sourceTree = "<group>";
 		};
 		35241A3A2863716500FA20C5 /* Controller */ = {
@@ -440,6 +450,7 @@
 		35EA8500285B820A00EAA1BB /* VKontakte */ = {
 			isa = PBXGroup;
 			children = (
+				3514EE6829226A3900A0B39E /* ImageCaсheHandler */,
 				35031D2C28F5A04800446756 /* Repository */,
 				356FF41728A2B740007A7BA1 /* Network */,
 				3572360228858A54008EE729 /* UIHelpers */,
@@ -639,6 +650,7 @@
 				35556C29290057AC0055DF3A /* TableViewCell.swift in Sources */,
 				356FF41428A280D6007A7BA1 /* TabViewController.swift in Sources */,
 				35C2C4C528F5995100F64BC2 /* UserRepository.swift in Sources */,
+				3514EE6A29226A5700A0B39E /* ImageCaсheHandler.swift in Sources */,
 				35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */,
 				358C7D18289D541D0078329C /* SessionSingleton.swift in Sources */,
 				35C2C4C628F5995100F64BC2 /* GroupRepository.swift in Sources */,
