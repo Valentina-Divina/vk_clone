@@ -12,7 +12,8 @@ class CustomInteractiveTransition: UIPercentDrivenInteractiveTransition {
     var hasStarted = false
     var shouldFinish = false
     
-    var viewController: UIViewController? { didSet {
+    var viewController: UIViewController? {
+        didSet {
         let recognizer = UIScreenEdgePanGestureRecognizer(target: self,
                                                           action: #selector(handleScreenEdgeGesture(_:)))
         recognizer.edges = [.left]
@@ -94,6 +95,5 @@ class CustomNavigationController: UINavigationController, UINavigationController
     ) -> UIViewControllerInteractiveTransitioning? {
         
         return interactiveTransition.hasStarted ? interactiveTransition : nil
-        
     }
 }

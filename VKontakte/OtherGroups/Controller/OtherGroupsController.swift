@@ -10,9 +10,9 @@ import UIKit
 class OtherGroupsController: UITableViewController {
    
     let otherGroups = [
-        OtherGroups(name: "Тут подкасты", image: UIImage(named: "grafon")),
+        OtherGroups(name: "Тут подкасты", image: UIImage(named: "drive")),
         OtherGroups(name: "Шумерля", image: UIImage(named: "shumerlya")),
-        OtherGroups(name: "Грустный голубь (очень)", image: UIImage(named: "golyb"))
+        OtherGroups(name: "Грустный голубь (очень)", image: UIImage(named: "preraf"))
     ]
     
     override func viewDidLoad() {

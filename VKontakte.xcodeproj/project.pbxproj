@@ -21,7 +21,6 @@
 		35241A52286499FF00FA20C5 /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */; };
 		35241A592864BB7A00FA20C5 /* OtherGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */; };
 		35241A5C2864BC0300FA20C5 /* OtherGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A5B2864BC0300FA20C5 /* OtherGroups.swift */; };
-		353DEF8B2913EB0500DF43AE /* NewsfeedRepository .swift in Sources */ = {isa = PBXBuildFile; fileRef = 353DEF8A2913EB0500DF43AE /* NewsfeedRepository .swift */; };
 		353DEF8D2913EB3100DF43AE /* Newsfeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353DEF8C2913EB3100DF43AE /* Newsfeed.swift */; };
 		353DEF8F2913EB4F00DF43AE /* NewsfeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353DEF8E2913EB4F00DF43AE /* NewsfeedService.swift */; };
 		35556C29290057AC0055DF3A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35556C27290057AC0055DF3A /* TableViewCell.swift */; };
@@ -80,7 +79,6 @@
 		35241A51286499FF00FA20C5 /* FriendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
 		35241A582864BB7A00FA20C5 /* OtherGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsCell.swift; sourceTree = "<group>"; };
 		35241A5B2864BC0300FA20C5 /* OtherGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroups.swift; sourceTree = "<group>"; };
-		353DEF8A2913EB0500DF43AE /* NewsfeedRepository .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsfeedRepository .swift"; sourceTree = "<group>"; };
 		353DEF8C2913EB3100DF43AE /* Newsfeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newsfeed.swift; sourceTree = "<group>"; };
 		353DEF8E2913EB4F00DF43AE /* NewsfeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedService.swift; sourceTree = "<group>"; };
 		35556C27290057AC0055DF3A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 				35C2C4C228F5995100F64BC2 /* UserRepository.swift */,
 				35C2C4C128F5995100F64BC2 /* PhotoRepository.swift */,
 				35C2C4C328F5995100F64BC2 /* GroupRepository.swift */,
-				353DEF8A2913EB0500DF43AE /* NewsfeedRepository .swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -624,7 +621,6 @@
 				35241A3128620FD300FA20C5 /* GroupListController.swift in Sources */,
 				356FF41028A1594D007A7BA1 /* VkLoginVC.swift in Sources */,
 				356FF41928A547FE007A7BA1 /* User.swift in Sources */,
-				353DEF8B2913EB0500DF43AE /* NewsfeedRepository .swift in Sources */,
 				35F761E828ACEE2D000A8412 /* WheatherApi.swift in Sources */,
 				35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */,
 				35241A4E2864963300FA20C5 /* FriendCollectionController.swift in Sources */,

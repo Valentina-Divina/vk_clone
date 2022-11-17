@@ -23,8 +23,6 @@ class PushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         destination.view.transform = .identity
         source.view.transform = .identity
         
-
-        
         let rotationDest = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
         destination.view.setAnchorPoint(CGPoint(x: 0, y: 0))
         source.view.setAnchorPoint(CGPoint(x: 0, y: 0))
