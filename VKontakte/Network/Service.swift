@@ -5,7 +5,6 @@
 //  Created by Valya on 09.08.2022.
 //
 
-import Foundation
 import Alamofire
 import RealmSwift
 import PromiseKit

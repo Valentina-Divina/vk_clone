@@ -97,7 +97,6 @@ class GroupListController: UITableViewController {
         return cell
     }
     
-    
     @IBAction func addSelectGroups(segue: UIStoryboardSegue) {
         if let selected = segue.source as? OtherGroupsController,
            let indexPath = selected.tableView.indexPathForSelectedRow {

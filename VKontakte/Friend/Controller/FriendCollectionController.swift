@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 private let reuseIdentifier = "FriendCollectionCellID"
 
@@ -15,7 +14,6 @@ class FriendCollectionController: UICollectionViewController {
     let session = SessionSingleton.shared
     let service = Service.shared
     let photoRepository = PhotoRepository.shared
-    let realm = try! Realm()
     let columnCount = 2
     let offset: CGFloat = 2.0
     var friend: MyFriends? = nil

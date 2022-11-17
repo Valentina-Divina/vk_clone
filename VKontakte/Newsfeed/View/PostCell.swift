@@ -8,22 +8,6 @@
 import UIKit
 import SnapKit
 
-class PostCell: UITableViewCell {
-    //    @IBOutlet weak var usernameLabel: UILabel!
-    //    @IBOutlet weak var userImage: UIImageView!
-    //    @IBOutlet weak var postTextLabel: UILabel!
-    //    @IBOutlet weak var timeAgoLabel: UILabel!
-    //    @IBOutlet weak var postStatusLabel: UILabel!
-    
-    var post: Post! {
-        didSet {
-            updateUI()
-        }
-    }
-    func updateUI() {
-    }
-}
-
 class HeaderCell: UITableViewCell {
     
     @IBOutlet weak var userImage: UIImageView!

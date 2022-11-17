@@ -5,7 +5,6 @@
 //  Created by Valya on 11.08.2022.
 //
 
-import Foundation
 import RealmSwift
 
 class GroupResponse: Object, Decodable {

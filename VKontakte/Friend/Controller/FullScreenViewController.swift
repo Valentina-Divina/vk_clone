@@ -10,7 +10,7 @@ import ScalingCarousel
 
 class FullScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var index: Int!
+    var index: Int = 0
     var allPhotos:[URL?] = []
     
     var scalingCarousel: ScalingCarouselView! = nil

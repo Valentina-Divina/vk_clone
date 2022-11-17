@@ -14,7 +14,6 @@ class NewsfeedController: UITableViewController {
     
     let service: NewsfeedService = NewsfeedService.shared
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchPosts()
