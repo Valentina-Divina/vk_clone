@@ -20,18 +20,12 @@ class NewsfeedService {
             "access_token": mainService.token,
             "v":"5.131"
         ]
-        
-        DispatchQueue.global(qos: .background).async {
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             
-            Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            if let data = response.data {
+                let newsFeed = try! JSONDecoder().decode(NewsFeed.self, from: data)
                 
-                if let data = response.data {
-                    let newsFeed = try! JSONDecoder().decode(NewsFeed.self, from: data)
-                    
-                    DispatchQueue.main.async {
-                        completion(newsFeed)
-                    }
-                }
+                completion(newsFeed)
             }
         }
     }

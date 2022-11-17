@@ -25,8 +25,12 @@ class NewsfeedController: UITableViewController {
         tableView.register(UINib(nibName: String(describing: ImagesCell.self), bundle: nil), forCellReuseIdentifier: "ImagesCellID")
         tableView.register(UINib(nibName: String(describing: FooterCell.self), bundle: nil), forCellReuseIdentifier: "FooterCellID")
         
-        service.getNewsFeed { newsFeed in
-            print(newsFeed)
+        DispatchQueue.global().async {
+            self.service.getNewsFeed { newsFeed in
+                DispatchQueue.main.async {
+                    print(newsFeed)
+                }
+            }
         }
     }
     
