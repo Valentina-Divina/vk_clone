@@ -64,18 +64,4 @@ class Service {
             }
         }
     }
-    
-    // MARK: - searchGroups
-    func getGroupsBySearch(query: String) {
-        let url = baseUrl + "/groups.search"
-        let parameters: Parameters = [
-            "access_token": token,
-            "v":"5.131",
-            "extended":"1",
-            "q": query,
-            "count":"3"]
-        
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-        }
-    }
 }

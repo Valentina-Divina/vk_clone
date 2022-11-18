@@ -23,13 +23,26 @@ class FriendCollectionController: UICollectionViewController {
         }
     }
     
+    var photoItemSize = CGSize()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let width = collectionView.frame.width / CGFloat(columnCount)
+        let height = width
+        let spacing = CGFloat((columnCount + 1)) * offset / CGFloat(columnCount)
+        
+        photoItemSize.width = width - spacing
+        photoItemSize.height = height - (offset * 2)
+        
         self.collectionView!.register(UINib(nibName: "FriendGalleryView", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         if let ownerId = friend?.id {
-            photoRepository.getPhotoData(ownerId: ownerId) { photoes in
-                self.allPhotos = photoes
+            DispatchQueue.global().async {
+                self.photoRepository.getPhotoData(ownerId: ownerId) { photoes in
+                    DispatchQueue.main.async {
+                        self.allPhotos = photoes
+                    }
+                }
             }
         }
     }
@@ -62,14 +75,6 @@ class FriendCollectionController: UICollectionViewController {
 
 extension FriendCollectionController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var size = CGSize()
-        let width = collectionView.frame.width / CGFloat(columnCount)
-        let height = width
-        let spacing = CGFloat((columnCount + 1)) * offset / CGFloat(columnCount)
-        
-        size.width = width - spacing
-        size.height = height - (offset * 2)
-        
-        return size
+        return photoItemSize
     }
 }
