@@ -89,8 +89,6 @@ extension CollageView: UICollectionViewDataSource {
             imageView.contentMode = .scaleAspectFill
         }
         
-        
-        
         myCell.addSubview(imageView)
         return myCell
     }

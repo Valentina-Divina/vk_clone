@@ -10,6 +10,7 @@
 		35038EA02868791B0038C244 /* CustomViewFriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35038E9F2868791B0038C244 /* CustomViewFriendsList.swift */; };
 		3514EE67291A7C5000A0B39E /* GetGroupsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3514EE66291A7C5000A0B39E /* GetGroupsOperation.swift */; };
 		3514EE6A29226A5700A0B39E /* ImageCaсheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3514EE6929226A5700A0B39E /* ImageCaсheHandler.swift */; };
+		3514EE6C2927D80500A0B39E /* NewsFeedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3514EE6B2927D80500A0B39E /* NewsFeedRepository.swift */; };
 		35241A2F28620D7E00FA20C5 /* FriendListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A2E28620D7E00FA20C5 /* FriendListController.swift */; };
 		35241A3128620FD300FA20C5 /* GroupListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A3028620FD300FA20C5 /* GroupListController.swift */; };
 		35241A332862121500FA20C5 /* OtherGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35241A322862121500FA20C5 /* OtherGroupsController.swift */; };
@@ -68,6 +69,7 @@
 		35038E9F2868791B0038C244 /* CustomViewFriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewFriendsList.swift; sourceTree = "<group>"; };
 		3514EE66291A7C5000A0B39E /* GetGroupsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsOperation.swift; sourceTree = "<group>"; };
 		3514EE6929226A5700A0B39E /* ImageCaсheHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageCaсheHandler.swift"; sourceTree = "<group>"; };
+		3514EE6B2927D80500A0B39E /* NewsFeedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedRepository.swift; sourceTree = "<group>"; };
 		35241A2E28620D7E00FA20C5 /* FriendListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListController.swift; sourceTree = "<group>"; };
 		35241A3028620FD300FA20C5 /* GroupListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListController.swift; sourceTree = "<group>"; };
 		35241A322862121500FA20C5 /* OtherGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				35C2C4C228F5995100F64BC2 /* UserRepository.swift */,
 				35C2C4C128F5995100F64BC2 /* PhotoRepository.swift */,
 				35C2C4C328F5995100F64BC2 /* GroupRepository.swift */,
+				3514EE6B2927D80500A0B39E /* NewsFeedRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				35EA8502285B820A00EAA1BB /* AppDelegate.swift in Sources */,
 				35241A422863795B00FA20C5 /* MyFriendsCell.swift in Sources */,
 				35241A332862121500FA20C5 /* OtherGroupsController.swift in Sources */,
+				3514EE6C2927D80500A0B39E /* NewsFeedRepository.swift in Sources */,
 				35A7BE96286B667700A03FE5 /* ColorGameViewController.swift in Sources */,
 				35EA8504285B820A00EAA1BB /* SceneDelegate.swift in Sources */,
 				3597100328735FA500F93F9C /* CollageView.swift in Sources */,

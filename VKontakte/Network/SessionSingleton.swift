@@ -15,7 +15,7 @@ class SessionSingleton {
     var userId: Int = 0
     
     func printUserId() {
-        print(userId)
+       print(userId)
     }
     
     func initToken() {

@@ -47,7 +47,6 @@ class GroupRepository {
                                 self.saveGroupData(converted)
                             }
                         }
-                        
                         self.myOwnQueue.addOperation(convertOperation)
                     }
                 }

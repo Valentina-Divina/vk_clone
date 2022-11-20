@@ -14,8 +14,12 @@ import UIKit
     private var imageView: UIImageView!
     private var lableControl: UILabel!
     
-    var heartsCounter = 0
-    var hearted: Bool = false 
+    var heartsCounter = 0 {
+        didSet {
+            self.lableControl.text = String(heartsCounter)
+        }
+    }
+    var hearted: Bool = false
     
     private let heartImageSelected: UIImage! = UIImage(systemName: "heart.fill")
     private let heartImage: UIImage! = UIImage(systemName: "heart")

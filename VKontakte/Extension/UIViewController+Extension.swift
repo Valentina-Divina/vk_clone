@@ -17,7 +17,6 @@ extension ViewController {
                                      style: .default) { _ in
             self.textLogin.text = ""
             self.textPassword.text = ""
-            
         }
         alertError.addAction(okAction)
         

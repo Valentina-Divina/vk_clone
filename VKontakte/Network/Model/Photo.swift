@@ -19,15 +19,14 @@ class ResponseFriendPhotos: Object, Decodable {
 
 class ItemFriendPhotos: Object, Decodable {
     @Persisted var sizes: List<SizeFriendPhotos>
-    //    @Persisted var likes: Like
     
     enum CodingKeys: String, CodingKey {
         case sizes
-        //        case likes
     }
 }
 
 class SizeFriendPhotos: Object, Decodable {
+    @Persisted var type: String? = nil
     @Persisted var url: String
 }
 
