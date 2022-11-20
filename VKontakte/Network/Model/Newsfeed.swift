@@ -18,15 +18,17 @@ class NewsFeed: Decodable {
 class NewsFeedResponse: Decodable {
     let items: [NewsFeedItem]?
     let groups: [Group]?
+    let nextFrom: String?
     
     enum CodingKeys: String, CodingKey {
         case items, groups
+        case nextFrom = "next_from"
     }
 }
 
 class NewsFeedItem: Decodable {
     let text: String?
-    let sourceId: Int64?
+    let sourceId: Int64
     let date: Int64?
     let comments: NewsFeedComments?
     let likes: NewsFeedLikes?

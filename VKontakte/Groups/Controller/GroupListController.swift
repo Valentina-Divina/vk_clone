@@ -44,7 +44,7 @@ class GroupListController: UITableViewController {
     private func getGroups() {
         // нотификация
         groups = groupRepository.getGroupData()
-        token = groups!.observe{ (changes: RealmCollectionChange) in
+        token = groups!.observe { (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
                 self.tableView.reloadData()
